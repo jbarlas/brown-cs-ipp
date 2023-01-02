@@ -1,0 +1,6 @@
+.home-bkg-img img {
+    max-width: 100vw;
+    /* max-height: 100vh; */
+    width: auto;
+    margin: auto;
+}
