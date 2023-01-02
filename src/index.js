@@ -8,6 +8,7 @@ import Home from "./views/home/Home";
 import Partners from "./views/partners/Partners";
 import Application from "./views/application/Application";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
