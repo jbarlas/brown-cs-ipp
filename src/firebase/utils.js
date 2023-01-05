@@ -1,10 +1,18 @@
 import { firebase_app } from "./config";
 import { getDatabase, ref, set } from "firebase/database";
-import { getAuth, signInAnonymously, signOut } from "firebase/auth";
+import { getAuth, signInAnonymously } from "firebase/auth";
 
 export const firebase_db = getDatabase(firebase_app);
 
-const auth = getAuth();
+export const auth = getAuth();
+
+signInAnonymously(auth)
+  .then((data) => {
+    console.log("signed in anonymously", data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 // await signOut(auth)
 //   .then(() => {
@@ -26,12 +34,13 @@ export const signInAnon = async () => {
     });
 };
 
-export const createCompany = (id, name, email) => {
-  set(ref(firebase_db, "companies/" + id), {
+export const submitCompanyApplication = (id, info) => {
+    console.log(id, info)
+  return set(ref(firebase_db, "companies/" + id), {
     id: id,
-    name: name,
-    email: email,
-  });
+    approved: false,
+    ...info,
+  })
 };
 
 export const createUser = (id, createdAt) => {

@@ -1,6 +1,5 @@
 import { initializeApp } from "firebase/app";
 
-
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_firebase_apiKey,
   authDomain: "brown-cs-ipp.firebaseapp.com",
@@ -12,5 +11,5 @@ const firebaseConfig = {
   // databaseURL: process.env.REACT_APP_firebase_databaseURL
 };
 
-// Initialize Firebase
+
 export const firebase_app = initializeApp(firebaseConfig);
