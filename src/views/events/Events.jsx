@@ -108,12 +108,13 @@ export default function Events() {
       justifyContent="center"
       alignItems="center">
         <Grid item xs={"3"}>
-        <Card sx={{ maxWidth: 345 }}>
-      <AspectRatio objectFit="contain"><CardMedia
-        sx={{ height: 140}}
-        image={require('./temp_imgs/duolingo_logo_2.png')}
+        <Card sx={{ maxWidth: 365 }}>
+        <CardMedia
+        component="img"
+        sx={{height: 140, objectFit: "contain"}}
+        image={require('./temp_imgs/duolingo_logo.png')}
         title="Deloitte Logo"
-      /></AspectRatio>
+      />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           Deloitte Info Session
@@ -170,7 +171,8 @@ export default function Events() {
         <Grid item xs={3}>
         <Card sx={{ maxWidth: 345 }}>
       <CardMedia
-        sx={{ height: 140 }}
+      component="img"
+      sx={{height: 140, objectFit: "contain"}}
         image={require('./temp_imgs/Deloitte_Logo.jpg')}
         title="Deloitte Logo"
       />
@@ -200,7 +202,8 @@ export default function Events() {
         <Grid item xs={3}>
         <Card sx={{ maxWidth: 345}}>
         <CardMedia
-        sx={{ height: 140 }}
+        component="img"
+        sx={{height: 140, objectFit: "contain"}}
         image={require('./temp_imgs/Deloitte_Logo.jpg')}
         title="Deloitte Logo"
       />
@@ -230,7 +233,8 @@ export default function Events() {
         <Grid item xs={3}>
         <Card sx={{ maxWidth: 345 }}>
       <CardMedia
-        sx={{ height: 140 }}
+        component="img"
+        sx={{height: 140, objectFit: "contain"}}
         image={require('./temp_imgs/Deloitte_Logo.jpg')}
         title="Deloitte Logo"
       />
