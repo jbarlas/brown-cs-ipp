@@ -6,7 +6,7 @@ import { signInAnon } from '../../firebase/utils'
 export default function Home() {
   return (
     <div>
-      Home test
+      Home testing
     </div>
   )
 }
