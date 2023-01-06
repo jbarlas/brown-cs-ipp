@@ -1,10 +1,10 @@
-.partners-search-wrapper {
+.partners_search_wrapper {
     display: flex;
-    justify-content: center;
-    margin-top: 5rem;
+    justify-content: space-evenly;
+    margin-top: 2rem;
 }
 
-.partners-search {
+.partners_search {
     border: 3px solid rgb(80, 80, 125);
     border-radius: 10rem;
     height: 5px;
@@ -15,7 +15,27 @@
     font-size: 1rem;
 }
 
-.partners-search:hover, .partners-search:focus {
+.partners_search:hover, .partners_search:focus {
     border: solid blue;
     background-color: white;
-  }
+}
+
+.partner_filter_button {
+    border: 3px solid rgb(80, 80, 125);
+    border-radius: 10rem;
+    background-color: white;
+    font-family: Menlo;
+    font-size: 1rem;
+    /* top right bottom left */
+    padding: 5px 10px 5px 10px;
+    transition: 0.3s
+}
+
+.partner_filter_button:hover {
+    background-color: lightgrey;
+}
+
+.partner_filter_button_icon {
+    max-height: 1rem;
+    padding-left: 1rem;
+}
