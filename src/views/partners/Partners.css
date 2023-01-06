@@ -1,0 +1,21 @@
+.partners-search-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+.partners-search {
+    border: 3px solid rgb(80, 80, 125);
+    border-radius: 10rem;
+    height: 5px;
+    width: 50%;
+    padding: 1rem;
+    background-color: #f5f5f5;
+    font-family: Menlo;
+    font-size: 1rem;
+}
+
+.partners-search:hover, .partners-search:focus {
+    border: solid blue;
+    background-color: white;
+  }
