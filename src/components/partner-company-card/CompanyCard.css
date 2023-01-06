@@ -1,0 +1,17 @@
+.navbar-container {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 0 30px;
+  background-color: lightgray;
+}
+
+.navbar-links-container {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+

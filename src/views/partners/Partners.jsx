@@ -1,7 +1,9 @@
-import React, {useState} from 'react'
 import './Partners.css';
+import React, {useState} from 'react'
+import CompanyCard from '../../components/partner-company-card/CompanyCard.jsx'
 
-import see_more_icon from '../../assets/triangle_icon.png';
+import expand_icon from '../../assets/partner_icons/expand_icon.png';
+import search_icon from '../../assets/partner_icons/search_icon.png';
 
 export default function Partners() {
   const searchBar = () => {}
@@ -31,23 +33,29 @@ export default function Partners() {
         <button class="partner_filter_button">
           <div>
           Filter by Size
-          <img class="partner_filter_button_icon" src={see_more_icon} alt= "placeholder"></img>
+          <img class="partner_icon" src={expand_icon} alt= "placeholder"></img>
           </div>
         </button>
 
         <button class="partner_filter_button">
           <div>
           Filter by Type
-          <img class="partner_filter_button_icon" src={see_more_icon} alt= "placeholder"></img>
+          <img class="partner_icon" src={expand_icon} alt= "placeholder"></img>
           </div>
         </button>
 
         <button class="partner_filter_button">
           <div>
           Filter by Profit
-          <img class="partner_filter_button_icon" src={see_more_icon} alt= "placeholder"></img>
+          <img class="partner_icon" src={expand_icon} alt= "placeholder"></img>
           </div>
         </button>
+      </div>
+
+      <br/>
+
+      <div class="partner_company_card_holder">
+        <CompanyCard/>
       </div>
     
     <p>{searchResponse}</p>
