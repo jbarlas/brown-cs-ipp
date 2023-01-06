@@ -11,13 +11,9 @@ export default function NavBar() {
         <Link to="/"> Industry Partners Program</Link>
       </div>
       <div className="navbar-links-container">
-        <div className="events-partners">
           <Link to="/events">EVENTS</Link>
           <Link to="/partners">PARTNERS</Link>
-        </div>
-        <Link to="/apply">
-          <button>APPLY</button>
-        </Link>
+          <Link to="/apply">APPLY</Link>
       </div>
     </div>
   );

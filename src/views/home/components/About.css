@@ -1,0 +1,19 @@
+body {
+    color: black
+}
+.about {
+    display: flex;
+    flex-direction: row;
+    margin: 0.5em 5em 1em 2em;
+}
+.about-text {
+    margin-right: 8em;
+}
+.about-icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.about-icons img {
+    margin: 0.5em 0 0.5em
+}
