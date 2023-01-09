@@ -1,6 +1,9 @@
 .team-header {
     margin: 0.5em 5em 1em 2em;
 }
+.team-header h2 {
+    font-size: 32px;
+}
 .our-team {
     display: flex;
     flex-direction: row;

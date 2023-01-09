@@ -13,19 +13,13 @@ export default function About() {
                     What is IPP?
                 </h2>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis semper erat. Integer vel porta eros, 
-                    ut egestas ex. Nullam et hendrerit dui, id tincidunt felis. Fusce turpis nisl, auctor et pellentesque et, luctus 
-                    at enim. Duis ac euismod urna. Aenean placerat dignissim viverra. Proin a nisi gravida, posuere justo vitae, 
-                    rutrum est. Quisque eu arcu eget nulla bibendum blandit sit amet vel neque. Sed eu justo ac mauris fermentum 
-                    rutrum eget ut elit. Vestibulum in volutpat quam, ut pellentesque enim. Donec euismod commodo elit, nec lobortis 
-                    libero congue a. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-                    totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt 
-                    explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur 
-                    magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor 
-                    sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam 
-                    aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit 
-                    laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate 
-                    velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+                    The Department of Computer Science at Brown University runs an industry partners program that offers corporations 
+                    and non-profit organizations opportunities to collaborate with faculty, learn about Brown's research, and meet 
+                    Brown students who are looking for employment. <br/>
+                    The Department seeks partners whose activities are aligned with Brown’s mission of education and research. Brown 
+                    CS celebrates diversity and is committed to creating an inclusive environment for all our constituents.  
+                    Membership in the IPP is by invitation. We welcome organizations whose business practices align with our expectation 
+                    for equal opportunity and fair employment, as well as the responsible, transparent, and accessible use of technology. 
                 </p>
             </div>
             <div class='about-icons'>

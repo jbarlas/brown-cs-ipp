@@ -11,7 +11,10 @@
 
 .home-text-on-img {
     position: absolute;
-    left: 50%;
-    bottom: 50%;
+    left: 40%;
+    bottom: 40%;
     color: white;
+}
+.home-text-on-img h1 {
+    font-size: 64px;
 }
