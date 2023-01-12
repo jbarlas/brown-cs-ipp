@@ -1,6 +1,7 @@
 import './Partners.css';
 import React, {useState} from 'react'
 import CompanyCard from '../../components/partner-company-card/CompanyCard.jsx'
+import CompanyCardLarge from '../../components/partner-company-card/CompanyCardLarge.jsx'
 import FilterButton from '../../components/partner-company-card/FilterButton.jsx'
 
 import expand_icon from '../../assets/partner_icons/expand_icon.png';
@@ -44,9 +45,22 @@ export default function Partners() {
 
       <br/>
 
-      {/* Company Cards Small */}
-      <div class="partner_company_card_holder">
-        <CompanyCard/>
+      <div class="partner_cards_holder">
+        {/* Company Cards Small */}
+        <div class="partner_company_card_holder">
+          <CompanyCard/>
+          <CompanyCard/>
+          <CompanyCard/>
+          <CompanyCard/>
+          <CompanyCard/>
+          <CompanyCard/>
+          <CompanyCard/>
+          <CompanyCard/>
+        </div>
+        {/* Company Card Large */}
+        <div class="partner_company_card_large_holder">
+          <CompanyCardLarge/>
+        </div>
       </div>
     
     <p>{searchResponse}</p>

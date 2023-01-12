@@ -23,8 +23,23 @@
     background-color: white;
 }
 
+.partner_cards_holder {
+    display:flex;
+    justify-content: center;
+}
+
 .partner_company_card_holder {
     display: flex;
     flex-direction: column;
-    margin-left: 1rem;
+    width: 554px;
+    height: 600px;
+    overflow-y: scroll;
+}
+
+.partner_company_card_large_holder {
+    display: flex;
+    flex-direction: column;
+    width: 650px;
+    height: 600px;
+    overflow-y: scroll;
 }

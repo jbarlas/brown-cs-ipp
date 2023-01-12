@@ -1,0 +1,6 @@
+.partner_company_card_large {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 2px solid rgb(200, 210, 220);
+  }
