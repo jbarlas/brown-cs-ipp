@@ -15,7 +15,7 @@ export default function About() {
                 <p>
                     The Department of Computer Science at Brown University runs an industry partners program that offers corporations 
                     and non-profit organizations opportunities to collaborate with faculty, learn about Brown's research, and meet 
-                    Brown students who are looking for employment. <br/>
+                    Brown students who are looking for employment. <br/> <br/>
                     The Department seeks partners whose activities are aligned with Brown’s mission of education and research. Brown 
                     CS celebrates diversity and is committed to creating an inclusive environment for all our constituents.  
                     Membership in the IPP is by invitation. We welcome organizations whose business practices align with our expectation 

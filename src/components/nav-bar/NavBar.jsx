@@ -1,6 +1,6 @@
 import React from "react";
 import "./NavBar.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from './images/ipp-logo.png'
 
 export default function NavBar() {
@@ -11,9 +11,30 @@ export default function NavBar() {
         <Link to="/"> Industry Partners Program</Link>
       </div>
       <div className="navbar-links-container">
-          <Link to="/events">EVENTS</Link>
-          <Link to="/partners">PARTNERS</Link>
-          <Link to="/apply">APPLY</Link>
+          <NavLink className="navbar-links"
+            to="/events" 
+            style={({ isActive }) => ({
+              color: isActive ? '#fff' : '#000000',
+              background: isActive ? '#193AA5' : '#fff',
+              })}
+            >
+              EVENTS</NavLink>
+          <NavLink className="navbar-links"
+            to="/partners"
+            style={({ isActive }) => ({
+              color: isActive ? '#fff' : '#000000',
+              background: isActive ? '#193AA5' : '#fff',
+              })}
+          >
+            PARTNERS</NavLink>
+          <NavLink className="navbar-links"
+            to="/apply"
+            style={({ isActive }) => ({
+              color: isActive ? '#fff' : '#000000',
+              background: isActive ? '#193AA5' : '#fff',
+              })}
+          >
+            APPLY</NavLink>
       </div>
     </div>
   );

@@ -1,8 +1,13 @@
+hr.solid {
+    border-top: 2px solid rgb(212, 211, 211);
+    margin: 5em 25em;
+}
+
 .team-header {
-    margin: 0.5em 5em 1em 2em;
+    margin: 1em 15em; 
 }
 .team-header h2 {
-    font-size: 32px;
+    font-size: 36px;
 }
 .our-team {
     display: flex;
@@ -10,3 +15,7 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+.team-lead h3{
+    margin-bottom: 0px;
+}
+
