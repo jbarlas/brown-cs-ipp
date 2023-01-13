@@ -113,16 +113,16 @@ export default function Events() {
         component="img"
         sx={{height: 140, objectFit: "contain"}}
         image={require('./temp_imgs/duolingo_logo.png')}
-        title="Deloitte Logo"
+        title="Duolingo Logo"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Deloitte Info Session
+          Duolingo Info Session
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          <b>Location:</b> CIT 458
+          <b>Location:</b> CIT 316
           <br></br>
-          <b>Time: </b>March 3rd 2023 12:30 - 14:00
+          <b>Time: </b>March 1st 2023 11:30 - 14:00
         </Typography>
       </CardContent>
       <CardActions>
@@ -141,7 +141,7 @@ export default function Events() {
         open={open2}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose2}>
-          Deloitte Event Information
+          Duolingo Event Information
         </BootstrapDialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
