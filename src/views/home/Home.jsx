@@ -17,11 +17,6 @@ export default function Home() {
       <hr class="solid"></hr>
       <div className="team-header">
         <h2>Our Team</h2>
-        <div class='team-lead'>
-                <img src="images/member.png"></img>
-                <h3>Charlotte Chan Lee</h3>
-                <p>Team Lead</p>
-            </div>
       </div>
       <div className="our-team">
         {memberList.map((member) => (<Team teamMember = {member}></Team>))}

@@ -10,16 +10,14 @@ export default function About() {
         <div className='about'>
             <div class='about-text'>
                 <h2>
-                    What is IPP?
+                    Our Values
                 </h2>
                 <p>
-                    The Department of Computer Science at Brown University runs an industry partners program that offers corporations 
-                    and non-profit organizations opportunities to collaborate with faculty, learn about Brown's research, and meet 
-                    Brown students who are looking for employment. <br/> <br/>
-                    The Department seeks partners whose activities are aligned with Brown’s mission of education and research. Brown 
-                    CS celebrates diversity and is committed to creating an inclusive environment for all our constituents.  
-                    Membership in the IPP is by invitation. We welcome organizations whose business practices align with our expectation 
-                    for equal opportunity and fair employment, as well as the responsible, transparent, and accessible use of technology. 
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
+                    Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.
+                    <br/> <br/>
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
+                    Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.
                 </p>
             </div>
             <div class='about-icons'>

@@ -1,5 +1,10 @@
 [
     {
+        "name": "Charlotte Chan Lee",
+        "role": "Team Lead",
+        "image": "images/member.png"
+    },
+    {
         "name": "Member 2",
         "role": "Role 2",
         "image": "images/member_fill.png"
