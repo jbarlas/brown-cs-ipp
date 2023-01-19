@@ -11,15 +11,25 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import FormGroup from '@mui/material/FormGroup';
 import FormLabel from '@mui/material/FormLabel';
 import Checkbox from '@mui/material/Checkbox';
 import CardMedia from '@mui/material/CardMedia';
 import Switch from '@mui/material/Switch';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import CardActions from '@mui/material/CardActions';
 import "./Application.css";
 
 
 export default function Application() {
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+
+  };
   return (
     <div>
     <div class='code-block' align="center" >
@@ -128,9 +138,7 @@ alignItems="center">
     
       </div>
       </Box>
-      <div>
-      <FormControlLabel control={<Checkbox defaultChecked color="secondary" />} label="Remote Accessibility?" />
-      </div>
+      
       <div>
       <Box
       component="form"
@@ -165,6 +173,117 @@ alignItems="center">
       </CardMedia>
       <br></br>
       <Box
+      
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '60ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1bh-content"
+          id="panel1bh-header"
+        >
+          <Typography sx={{ width: '33%', flexShrink: 0 }}>
+            DEI (Diversity, Equity, Inclusion)
+          </Typography>
+          <Typography sx={{ color: 'text.secondary' }}> How does your company build an environment that fosters diversity, equity, and inclusion?</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <TextField
+          id="filled-multiline-static"
+          color="secondary"
+          label="Response"
+          multiline
+          rows={4}
+        />
+        </AccordionDetails>
+      </Accordion>
+      <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel2bh-content"
+          id="panel2bh-header"
+        >
+          <Typography sx={{ width: '33%', flexShrink: 0 }}>Environmental Responsibility</Typography>
+          <Typography sx={{ color: 'text.secondary' }}>
+          How is your company working to protect the environment and address climate change?
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <TextField
+          id="filled-multiline-static"
+          color="secondary"
+          label="Response"
+          multiline
+          rows={4}
+        />
+        </AccordionDetails>
+      </Accordion>
+      <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel3bh-content"
+          id="panel3bh-header"
+        >
+          <Typography sx={{ width: '33%', flexShrink: 0 }}>
+            Social Impact
+          </Typography>
+          <Typography sx={{ color: 'text.secondary' }}>
+          How does your company have/aim to have a positive social impact?
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <TextField
+          id="filled-multiline-static"
+          color="secondary"
+          label="Response"
+          multiline
+          rows={4}
+        />
+        </AccordionDetails>
+      </Accordion>
+      <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel4bh-content"
+          id="panel4bh-header"
+        >
+          <Typography sx={{ width: '33%', flexShrink: 0 }}>Mentorship</Typography>
+          <Typography sx={{ color: 'text.secondary' }}>
+          How do opportunities with your company facilitate professional growth and mentorship?
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <TextField
+          id="filled-multiline-static"
+          color="secondary"
+          label="Response"
+          multiline
+          rows={4}
+        />
+        </AccordionDetails>
+      </Accordion>
+       
+      </Box>
+      </div>
+      <br></br>
+      <div>
+        <Typography variant="h6">
+          <b>Current Openings</b>
+        </Typography>
+
+          <FormControlLabel control={<Switch defaultChecked color="secondary" />} label="Would you like to advertise current open positions through IPP?" />
+        
+      </div>
+
+      <div>
+
+      <Card variant="outlined" sx={{ minWidth: '60ch', maxWidth: '65ch' }}>
+      <CardContent>
+      <Box
       component="form"
       sx={{
         '& .MuiTextField-root': { m: 1, width: '60ch' },
@@ -174,21 +293,91 @@ alignItems="center">
     >
        <TextField
           id="filled-multiline-static"
+          label="Job Title"
           color="secondary"
-          label="How does your company build an environment that fosters diversity, equity, and inclusion?"
-          multiline
-          rows={4}
         />
       </Box>
-      </div>
+      <Box
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '60ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+       <TextField
+          id="filled-multiline-static"
+          label="Compensation Range"
+          color="secondary"
+        />
+      </Box>
+      <Box
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '28.79ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+       <TextField
+          id="filled-multiline-static"
+          label="Start Date"
+          color="secondary"
+        />
+        <TextField
+          id="filled-multiline-static"
+          label="End Date"
+          color="secondary"
+        />
+      </Box>
+      <Box
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '60ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+       <TextField
+          id="filled-multiline-static"
+          label="Skills and Qualifications"
+          color="secondary"
+        />
+      </Box>
+      <Box
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '60ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+       <TextField
+          id="filled-multiline-static"
+          label="Deadline"
+          color="secondary"
+        />
+      </Box>
+      <Box
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '60ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+       <TextField
+          id="filled-multiline-static"
+          label="How to Apply"
+          color="secondary"
+        />
+      </Box>
       <div>
-        <Typography variant="h6">
-          <b>Current Openings</b>
-        </Typography>
-
-          <FormControlLabel control={<Switch defaultChecked color="secondary" />} label="Would you like to advertise current open positions through IPP?" />
-
+      <FormControlLabel control={<Checkbox defaultChecked color="secondary" />} label="Remote Accessibility?" />
       </div>
+      </CardContent>
+    </Card>
+</div>
 
       <div>
       <br></br>
@@ -219,6 +408,7 @@ alignItems="center">
       <Button variant="contained" color="secondary"><b>Submit</b></Button>
       <br></br>
       <br></br>
+      
       </div>
 
     </div>
