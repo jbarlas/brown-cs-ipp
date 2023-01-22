@@ -1,6 +1,28 @@
 .partner_company_card_large {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    border: 2px solid rgb(200, 210, 220);
-  }
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 1rem;
+  border: 2px solid rgb(200, 210, 220);
+}
+
+.partner_logo_large {
+  width: 10rem;
+}
+
+.partner_hiring_icon {
+  height: 30px;
+  width: 30px;
+  padding-left: 1rem;
+}
+
+.partner_info_text_div {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.partner_tag_div {
+  display: flex;
+  align-items: center;
+}

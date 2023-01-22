@@ -1,0 +1,17 @@
+.partner_jobcard {
+  border: 2px solid rgb(200, 210, 220);
+  border-radius: 10px;
+}
+
+.partner_jobcard_header {
+  display: flex;
+  align-items: center;
+}
+
+.partner_jobcard_icon {
+  width: 4rem;
+}
+
+.parter_jobcard_title {
+  font-weight: bold;
+}
