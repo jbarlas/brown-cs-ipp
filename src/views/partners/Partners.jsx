@@ -1,11 +1,10 @@
 import './Partners.css';
 import React, {useState} from 'react'
 import CompanyCard from '../../components/partner-company-card/CompanyCard.jsx'
-import CompanyCardLarge from '../../components/partner-company-card/CompanyCardLarge.jsx'
+import CompanyPage from '../../components/partner-company-card/CompanyPage.jsx'
 import FilterButton from '../../components/partner-company-card/FilterButton.jsx'
 
-import expand_icon from '../../assets/partner_icons/expand_icon.png';
-import search_icon from '../../assets/partner_icons/search_icon.png';
+import company_logo from '../../assets/ipp-logo.png';
 
 export default function Partners() {
   const searchBar = () => {}
@@ -21,6 +20,43 @@ export default function Partners() {
       setSearchResponse("not searching");
     }
   };
+
+  const SizeFilterItems = 
+    [
+      {"label":"Any", "descriptor":""},
+      {"label":"Tiny", "descriptor":"<10 Employees"},
+      {"label":"Small", "descriptor":"10-30 Employees"},
+      {"label":"Medium", "descriptor":"30-50 Employees"},
+      {"label":"Large", "descriptor":"50-100 Employees"},
+      {"label":"Very Large", "descriptor":"100+ Employees"}
+    ]
+
+  const TypeFilterItems = 
+    [
+      {"label":"Any", "descriptor":""},
+      {"label":"Tech", "descriptor":""}
+    ]
+
+  const ProfitFilterItems = 
+    [
+      {"label":"Any", "descriptor":""},
+      {"label":"NonProfit", "descriptor":""},
+      {"label":"Not For Profit", "descriptor":""},
+      {"label":"For Profit", "descriptor":""}
+    ]
+
+  const CompanyList = 
+    [
+      {
+        "name": "Duolingo",
+        // "logo": {company_logo},
+        "location": "PN, USA",
+        "size": "500+ Employees",
+        "description": "Duolingo is an American educational technology company which produces learning apps and provides language certification.",
+        "industry": "Education",
+        "profit": "For Profit"
+      }
+    ]
   
   return (
     <div>
@@ -36,10 +72,10 @@ export default function Partners() {
 
         {/* Filters */}
         <div style={{display: 'flex'}}>
-          <p>Filter By:</p>
-          <FilterButton text="Size"/>
-          <FilterButton text="Type"/>
-          <FilterButton text="Profit"/>
+          <p style = {{fontWeight: 'bold'}}>Filter By:</p>
+          <FilterButton text="Size" filterItems={SizeFilterItems}/>
+          <FilterButton text="Type" filterItems={TypeFilterItems}/>
+          <FilterButton text="Profit" filterItems={ProfitFilterItems}/>
         </div>
       </div>
 
@@ -48,18 +84,13 @@ export default function Partners() {
       <div class="partner_cards_holder">
         {/* Company Cards Small */}
         <div class="partner_company_card_holder">
-          <CompanyCard/>
-          <CompanyCard/>
-          <CompanyCard/>
-          <CompanyCard/>
-          <CompanyCard/>
-          <CompanyCard/>
-          <CompanyCard/>
-          <CompanyCard/>
+          {CompanyList.map((item) => (
+            <CompanyCard props={item}/>
+          ))}
         </div>
         {/* Company Card Large */}
         <div class="partner_company_card_large_holder">
-          <CompanyCardLarge/>
+          <CompanyPage/>
         </div>
       </div>
     

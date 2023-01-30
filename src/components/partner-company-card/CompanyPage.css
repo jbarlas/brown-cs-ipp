@@ -2,11 +2,12 @@
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  padding: 1rem;
+  padding: 2rem;
   border: 2px solid rgb(200, 210, 220);
 }
 
 .partner_logo_large {
+  height: 10rem;
   width: 10rem;
 }
 
@@ -20,9 +21,4 @@
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-}
-
-.partner_tag_div {
-  display: flex;
-  align-items: center;
 }

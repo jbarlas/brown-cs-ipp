@@ -18,8 +18,8 @@ export default function JobCard() {
       anything the company.  A small blurb about the job or internship detailing anything
       the company wanted to include. wanted to include. </p>
       <div style = {{display: 'flex', justifyContent: 'space-between'}}>
-        <p class="partner_jobcard_payrange">Pay Range</p>
-        <button class="partner_jobcard_button">Engage</button>
+        <p class="parter_jobcard_subtitle">Pay Range</p>
+        <button class="partner_jobcard_button">ENGAGE</button>
       </div>
     </div>
   );

@@ -22,3 +22,10 @@
   max-height: 1rem;
   padding-left: 5px;
 }
+
+.partner_filter_menu {
+  border-radius: 30px;
+  padding: 5px;
+  margin: 5px;
+  width: auto;
+}
