@@ -1,0 +1,45 @@
+.partners_search_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.partners_search {
+    border: 3px solid rgb(200, 210, 220);
+    border-radius: 10rem;
+    height: 5px;
+    width: 50%;
+    padding: 1rem;
+    margin-right: 1rem;
+    background-color: white;
+    font-family: Menlo;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.partners_search:hover, .partners_search:focus {
+    border: solid rgb(150, 170, 190);
+    background-color: white;
+}
+
+.partner_cards_holder {
+    display:flex;
+    justify-content: center;
+}
+
+.partner_company_card_holder {
+    display: flex;
+    flex-direction: column;
+    width: 554px;
+    height: 600px;
+    overflow-y: scroll;
+}
+
+.partner_company_card_large_holder {
+    display: flex;
+    flex-direction: column;
+    width: 650px;
+    height: 600px;
+    overflow-y: scroll;
+}

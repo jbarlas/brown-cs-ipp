@@ -1,0 +1,34 @@
+.partner_jobcard {
+  border: 2px solid rgb(200, 210, 220);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.partner_jobcard_header {
+  display: flex;
+  align-items: center;
+}
+
+.partner_jobcard_icon {
+  width: 4rem;
+}
+
+.parter_jobcard_title {
+  font-weight: bold;
+}
+
+.parter_jobcard_subtitle {
+  font-weight: bold;
+  color:gray;
+}
+
+.partner_jobcard_button {
+  border: 0px solid rgb(20, 50, 90);
+  border-radius: 5px;
+  background-color: rgb(20, 50, 90);
+  color: white;
+  font-weight: bold;
+  width: 85px;
+  height: 40px;
+}

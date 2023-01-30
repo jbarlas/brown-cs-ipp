@@ -1,0 +1,54 @@
+.partner_company_card {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 2px solid rgb(200, 210, 220);
+  width: 550px;
+  height: 120px;
+}
+
+.partner_company_card:hover {
+  background-color: rgb(200, 210, 220);
+}
+
+.partner_mini_card_title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+.partner_mini_card_subtitle {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.partner_hiring_icon {
+  height: 30px;
+  width: 30px;
+  padding-left: 1rem;
+}
+
+.partner_logo {
+  height: 5rem;
+}
+
+.partner_tag {
+  display: flex;
+  align-items: center;
+  width: 150px;
+  height: 40px;
+  border-width: 5px;
+  border-radius: 5px;
+  background-color: rgb(150, 170, 190);
+  font-family: Menlo;
+  font-size: 14px;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.partner_tag_icon {
+  height: 50px;
+  width: 50px;
+}

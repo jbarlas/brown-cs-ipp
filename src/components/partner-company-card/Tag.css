@@ -1,0 +1,14 @@
+.partner_tag_div {
+  display: flex;
+  align-items: center;
+}
+
+.partner_tag_icon {
+  height: 30px;
+  width: 30px;
+}
+
+.partner_tag_text {
+  margin: 0;
+  padding: 0;
+}
