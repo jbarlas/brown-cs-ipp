@@ -3,7 +3,6 @@ import "./Application.css";
 import {
   submitCompanyApplication,
   emailSignIn,
-  getCurrentPartners,
 } from "../../firebase/utils";
 
 export default function Application() {
@@ -41,7 +40,7 @@ export default function Application() {
   };
 
   /**
-   * calls submitCompanyApplication using current applicationInfo object -- checks for form validation and verification 
+   * calls submitCompanyApplication using current applicationInfo object -- checks for form validation and verification
    * @param {event} event should only be called on form submit
    */
   const submitForm = (event) => {
@@ -58,15 +57,19 @@ export default function Application() {
             }, {})
           );
         })
-        .catch((_) => // error in verifying id
-          setErrors({
-            ...errors,
-            validation: false,
-            verification: true,
-          })
+        .catch(
+          (
+            _ // error in verifying id
+          ) =>
+            setErrors({
+              ...errors,
+              validation: false,
+              verification: true,
+            })
         );
     } else {
-      setErrors({ // errors in validating information (parts of form are not complete)
+      setErrors({
+        // errors in validating information (parts of form are not complete)
         ...errors,
         validation: true,
         verification: false,
@@ -76,19 +79,7 @@ export default function Application() {
 
   return (
     <>
-    <div>
-    {/* button is for testing purposes */}
-        <div
-          onClick={getCurrentPartners}
-          style={{
-            backgroundColor: "red",
-            cursor: "pointer",
-            userSelect: "none",
-          }}
-        >
-          get partners
-        </div>
-
+      <div>
         <form action="" autoComplete="off">
           email
           <input

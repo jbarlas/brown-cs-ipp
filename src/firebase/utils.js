@@ -106,7 +106,6 @@ export const getCurrentPartners = () => {
   return get(child(ref(firebase_db), "partners"))
     .then((snapshot) => {
       if (snapshot.exists()) {
-        console.log(snapshot.val());
         return snapshot.val();
       } else {
         console.log("snapshot does not exist");
