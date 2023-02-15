@@ -77,6 +77,19 @@ export default function Application() {
     }
   };
 
+  /**
+   * checks if code exists in database
+   * @param {string} code 
+   * @returns boolean validating code existence in firebase
+   */
+  const validateCode = code => {
+    return true
+    // codes that should work rn:
+    // test-company-1
+    // test-company-2
+    // test-william
+  }
+
   return (
     <>
       <div>
