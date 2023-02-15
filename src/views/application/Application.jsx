@@ -1,40 +1,55 @@
 import React from "react";
 import "./Application.css";
-import { submitCompanyApplication } from "../../firebase/utils";
+import {
+  submitCompanyApplication,
+  emailSignIn,
+  getCurrentPartners,
+} from "../../firebase/utils";
 
 export default function Application() {
+  /**
+   * template application for empty state -- should contain all relevant fields for company application
+   */
   const blankApp = {
     id: "",
     name: "",
+    // add rest of fields here
   };
-
+  /**
+   * object used for keeping track of application errors
+   */
   const [errors, setErrors] = React.useState({
-    validation: false,
-    verification: false,
+    validation: false, // form submitted without all fields
+    verification: false, // id does not exist in /partners/${id}
   });
   const [applicationInfo, setApplicationInfo] = React.useState(blankApp);
 
+  // used for internal purposes
+  const [email, setEmail] = React.useState();
+  const [password, setPassword] = React.useState();
+
+  /**
+   * handler function for updating applicationInfo object
+   * @param {event} event should come from a form input object with target.name equal to the name of the key you wish to update
+   */
   const handleInput = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     setApplicationInfo({
       ...applicationInfo,
       [event.target.name]: event.target.value,
     });
   };
 
-  React.useEffect(() => {
-    // console.log(applicationInfo);
-  });
-
+  /**
+   * calls submitCompanyApplication using current applicationInfo object -- checks for form validation and verification 
+   * @param {event} event should only be called on form submit
+   */
   const submitForm = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     if (Object.values(applicationInfo).every((x) => !!x)) {
-      const info = {
-        name: applicationInfo.name,
-      };
-      submitCompanyApplication(applicationInfo.id.trim(), info)
+      submitCompanyApplication(applicationInfo.id.trim(), applicationInfo)
         .then(() => {
-          console.log('successfully submitted application')
+          console.log("successfully submitted application");
           setApplicationInfo(blankApp);
           setErrors(
             Object.keys(errors).reduce((acc, key) => {
@@ -43,7 +58,7 @@ export default function Application() {
             }, {})
           );
         })
-        .catch((_) =>
+        .catch((_) => // error in verifying id
           setErrors({
             ...errors,
             validation: false,
@@ -51,7 +66,7 @@ export default function Application() {
           })
         );
     } else {
-      setErrors({
+      setErrors({ // errors in validating information (parts of form are not complete)
         ...errors,
         validation: true,
         verification: false,
@@ -61,9 +76,48 @@ export default function Application() {
 
   return (
     <>
-      <div className="application-container">
-        <form action="" onSubmit={submitForm} autoComplete="off">
+    <div>
+    {/* button is for testing purposes */}
+        <div
+          onClick={getCurrentPartners}
+          style={{
+            backgroundColor: "red",
+            cursor: "pointer",
+            userSelect: "none",
+          }}
+        >
+          get partners
+        </div>
 
+        <form action="" autoComplete="off">
+          email
+          <input
+            type="text"
+            name="email"
+            value={email}
+            onChange={(e) => {
+              e.preventDefault();
+              setEmail(e.target.value);
+            }}
+          />
+          password
+          <input
+            type="text"
+            name="password"
+            value={password}
+            onChange={(e) => {
+              e.preventDefault();
+              setPassword(e.target.value);
+            }}
+          />
+          <div
+            className="application-button"
+            onClick={() => emailSignIn(email, password)}
+          >
+            submit
+          </div>
+        </form>
+        <form action="" onSubmit={submitForm} autoComplete="off">
           <div>
             id
             <input
