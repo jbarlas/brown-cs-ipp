@@ -21,9 +21,15 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FormGroup from '@mui/material/FormGroup';
 import "./Application.css";
+//Firebase Imports
+// import {
+//   submitCompanyApplication,
+//   emailSignIn,
+// } from "../../firebase/utils";
 
 
 export default function Application() {
+
   const [expanded, setExpanded] = React.useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
@@ -31,14 +37,182 @@ export default function Application() {
 
   };
 
+  /**
+   * Functions for Current Openings Toggle Button
+   */
   const [showForm, setShowForm] = useState(false);
 
   const handleToggle = () => {
     setShowForm(!showForm);
   };
 
+  //Firebase Integration Below:
+ 
+  // /**
+  //  * template application for empty state -- should contain all relevant fields for company application
+  //  */
+  // const blankApp = {
+  //   id: "",
+  //   name: "",
+  //   industry: "",
+  //   website: "",
+  //   size: "",
+  //   locations: "",
+  //   bus-type: "",
+  //   mission: "",
+  //   dei: "",
+  //   env-res: "",
+  //   soc-imp: "",
+  //   mentor: "",
+  //   current: "", //Should we create separate object for this? Some companies may not have current openings. Or should we just make the forms fill N/A for all categories within if the switch is false
+  //   future: "",
+  // };
+  // /**
+  //  * object used for keeping track of application errors
+  //  */
+  // const [errors, setErrors] = React.useState({
+  //   validation: false, // form submitted without all fields
+  //   verification: false, // id does not exist in /partners/${id}
+  // });
+  // const [applicationInfo, setApplicationInfo] = React.useState(blankApp);
+
+  // // used for internal purposes
+  // const [email, setEmail] = React.useState();
+  // const [password, setPassword] = React.useState();
+
+  // /**
+  //  * handler function for updating applicationInfo object
+  //  * @param {event} event should come from a form input object with target.name equal to the name of the key you wish to update
+  //  */
+  // const handleInput = (event) => {
+  //   event.preventDefault();
+  //   setApplicationInfo({
+  //     ...applicationInfo,
+  //     [event.target.name]: event.target.value,
+  //   });
+  // };
+
+  // /**
+  //  * calls submitCompanyApplication using current applicationInfo object -- checks for form validation and verification
+  //  * @param {event} event should only be called on form submit
+  //  */
+  // const submitForm = (event) => {
+  //   event.preventDefault();
+  //   if (Object.values(applicationInfo).every((x) => !!x)) {
+  //     submitCompanyApplication(applicationInfo.id.trim(), applicationInfo)
+  //       .then(() => {
+  //         console.log("successfully submitted application");
+  //         setApplicationInfo(blankApp);
+  //         setErrors(
+  //           Object.keys(errors).reduce((acc, key) => {
+  //             acc[key] = false;
+  //             return acc;
+  //           }, {})
+  //         );
+  //       })
+  //       .catch(
+  //         (
+  //           _ // error in verifying id
+  //         ) =>
+  //           setErrors({
+  //             ...errors,
+  //             validation: false,
+  //             verification: true,
+  //           })
+  //       );
+  //   } else {
+  //     setErrors({
+  //       // errors in validating information (parts of form are not complete)
+  //       ...errors,
+  //       validation: true,
+  //       verification: false,
+  //     });
+  //   }
+  // };
+
+  // /**
+  //  * checks if code exists in database
+  //  * @param {string} code 
+  //  * @returns boolean validating code existence in firebase
+  //  */
+  // const validateCode = code => {
+  //   return true
+  //   // codes that should work rn:
+  //   // test-company-1
+  //   // test-company-2
+  //   // test-william
+  // }
+  
+  
+
   return (
     <div>
+      {/*Firebase Tests
+      <div>
+        <form action="" autoComplete="off">
+          email
+          <input
+            type="text"
+            name="email"
+            value={email}
+            onChange={(e) => {
+              e.preventDefault();
+              setEmail(e.target.value);
+            }}
+          />
+          password
+          <input
+            type="text"
+            name="password"
+            value={password}
+            onChange={(e) => {
+              e.preventDefault();
+              setPassword(e.target.value);
+            }}
+          />
+          <div
+            className="application-button"
+            onClick={() => emailSignIn(email, password)}
+          >
+            submit
+          </div>
+        </form>
+        <form action="" onSubmit={submitForm} autoComplete="off">
+          <div>
+            id
+            <input
+              name="id"
+              type="text"
+              value={applicationInfo.id}
+              onChange={handleInput}
+            />
+          </div>
+          <div>
+            name
+            <input
+              name="name"
+              type="text"
+              value={applicationInfo.name}
+              onChange={handleInput}
+            />
+          </div>
+          <div className="application-button" onClick={submitForm}>
+            submit
+          </div>
+          {errors.validation && (
+            <div>please fill out all parts of the form!</div>
+          )}
+          {errors.verification && (
+            <div>
+              issue submitting application, please make sure the company id is
+              correct
+            </div>
+          )}
+        </form>
+      </div>
+    */}
+
+      {/*Application Page Code*/}
       <div class='code-block' align="center" >
         <br></br>
         <br></br>
