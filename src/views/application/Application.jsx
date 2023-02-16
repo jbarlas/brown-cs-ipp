@@ -735,23 +735,35 @@ export default function Application() {
               <b>Submit</b>
             </Button>
             {errors.validation && (
-              <Typography variant="body2" component="div" color="error">
-                <br />
+              <Snackbar
+                open={errors.validation}
+                autoHideDuration={6000}
+                anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                onClose={() => setErrors({...errors, validation: false})}
+                action={() => console.log("action")}
+              >
+                <Alert severity="error" sx={{ width: "100%" }}>
                 Please fill out all parts of the form!
-              </Typography>
+                </Alert>
+              </Snackbar>
             )}
             {errors.verification && (
-              <Typography variant="body2" component="div" color="error">
-                <br />
-                Issue submitting the application, please try again!
-              </Typography>
+              <Snackbar
+                open={errors.verification}
+                autoHideDuration={6000}
+                onClose={() => setErrors({...errors, verification: false})}
+                anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+              >
+                <Alert severity="error" sx={{ width: "100%" }}>
+                  Issue submitting the application, please try again!
+                </Alert>
+              </Snackbar>
             )}
             {submitSuccess && (
               <Snackbar
                 open={submitSuccess}
                 onClose={() => setSubmitSuccess(false)}
                 anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-                message="Application Successfully Submitted!"
               >
                 <Alert
                   onClose={() => setSubmitSuccess(false)}
