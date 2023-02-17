@@ -68,21 +68,20 @@ export default function Application() {
     validCode: false,
   };
 
-  const [submitSuccess, setSubmitSuccess] = React.useState(false);
+  /**
+   * application object to be updated by the form and sent to firebase on form submit
+   */
+  const [applicationInfo, setApplicationInfo] = React.useState(blankApp);
 
   /**
    * object used for keeping track of application errors
    */
   const [errors, setErrors] = React.useState({
     validation: false, // form submitted without all fields
-    verification: false, // id does not exist in /partners/${id}
-    invalidId: false,
+    verification: false, // server error
+    invalidId: false, // submitted id does not exist in the database
+    submitSuccess: false, // used to display form submit success snackbar
   });
-  const [applicationInfo, setApplicationInfo] = React.useState(blankApp);
-
-  // used for internal purposes
-  // const [email, setEmail] = React.useState();
-  // const [password, setPassword] = React.useState();
 
   /**
    * handler function for updating applicationInfo object
@@ -96,9 +95,13 @@ export default function Application() {
     });
   };
 
+  /**
+   * checks validation rules against applicationInfo object
+   * @returns boolean indicating if form is valid & can be submitted
+   */
   const validateForm = () => {
     // Object.values(applicationInfo).every((x) => !!x) // checks to see if all values are not empty
-    return applicationInfo.validCode && applicationInfo.name !== "";
+    return applicationInfo.validCode && applicationInfo.name !== ""; // right now, only checks for valid code and name !== ""
   };
 
   /**
@@ -121,7 +124,7 @@ export default function Application() {
               return acc;
             }, {})
           );
-          setSubmitSuccess(true);
+          setErrors({ ...errors, submitSuccess: true });
         })
         .catch(
           (
@@ -144,7 +147,7 @@ export default function Application() {
   };
 
   /**
-   * checks if code exists in database
+   * checks if code exists in database and updates errors/applicationInfo object
    * @param {string} code
    * @returns boolean validating code existence in firebase
    */
@@ -154,7 +157,10 @@ export default function Application() {
         setErrors({ ...errors, invalidId: !valid });
         setApplicationInfo({ ...applicationInfo, validCode: valid });
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => {
+        console.log("error validating application code", error);
+        setErrors({ ...errors, verification: true });
+      });
   };
   // codes that should work rn:
   // test-company-1
@@ -164,71 +170,6 @@ export default function Application() {
   return (
     <>
       <div>
-        {/* <div>
-        <form action="" autoComplete="off">
-          email
-          <input
-            type="text"
-            name="email"
-            value={email}
-            onChange={(e) => {
-              e.preventDefault();
-              setEmail(e.target.value);
-            }}
-          />
-          password
-          <input
-            type="text"
-            name="password"
-            value={password}
-            onChange={(e) => {
-              e.preventDefault();
-              setPassword(e.target.value);
-            }}
-          />
-          <div
-            className="application-button"
-            onClick={() => emailSignIn(email, password)}
-          >
-            submit
-          </div>
-        </form>
-        <form action="" onSubmit={submitForm} autoComplete="off">
-          <div>
-            id
-            <input
-              name="id"
-              type="text"
-              value={applicationInfo.id}
-              onChange={handleInput}
-            />
-          </div>
-          <div>
-            name
-            <input
-              name="name"
-              type="text"
-              value={applicationInfo.name}
-              onChange={handleInput}
-            />
-          </div>
-          <div className="application-button" onClick={submitForm}>
-            submit
-          </div>
-          {errors.validation && (
-            <div>please fill out all parts of the form!</div>
-          )}
-          {errors.verification && (
-            <div>
-              issue submitting application, please make sure the company id is
-              correct
-            </div>
-          )}
-        </form>
-      </div>
-    */}
-
-        {/*Application Page Code*/}
         <div className="code-block" align="center">
           <br></br>
           <br></br>
@@ -254,7 +195,7 @@ export default function Application() {
                     label="Appplication Code"
                     variant="outlined"
                     name="applicationId"
-                    onSubmit={(e) => e.preventDefault()}
+                    onKeyPress={e => e.key === 'Enter' && e.preventDefault()}
                     value={applicationInfo.applicationId}
                     onChange={handleInput}
                     error={errors.invalidId}
@@ -264,7 +205,7 @@ export default function Application() {
                         ? "Invalid Application Code"
                         : applicationInfo.validCode
                         ? "Valid Application Code!"
-                        : null
+                        : ""
                     }
                   />
                 </Box>
@@ -739,11 +680,11 @@ export default function Application() {
                 open={errors.validation}
                 autoHideDuration={6000}
                 anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-                onClose={() => setErrors({...errors, validation: false})}
+                onClose={() => setErrors({ ...errors, validation: false })}
                 action={() => console.log("action")}
               >
                 <Alert severity="error" sx={{ width: "100%" }}>
-                Please fill out all parts of the form!
+                  Please fill out all parts of the form!
                 </Alert>
               </Snackbar>
             )}
@@ -751,7 +692,7 @@ export default function Application() {
               <Snackbar
                 open={errors.verification}
                 autoHideDuration={6000}
-                onClose={() => setErrors({...errors, verification: false})}
+                onClose={() => setErrors({ ...errors, verification: false })}
                 anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
               >
                 <Alert severity="error" sx={{ width: "100%" }}>
@@ -759,14 +700,14 @@ export default function Application() {
                 </Alert>
               </Snackbar>
             )}
-            {submitSuccess && (
+            {errors.submitSuccess && (
               <Snackbar
-                open={submitSuccess}
-                onClose={() => setSubmitSuccess(false)}
+                open={errors.submitSuccess}
+                onClose={() => setErrors({ ...errors, submitSuccess: false })}
                 anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
               >
                 <Alert
-                  onClose={() => setSubmitSuccess(false)}
+                  onClose={() => setErrors({ ...errors, submitSuccess: false })}
                   severity="success"
                   sx={{ width: "100%" }}
                 >
