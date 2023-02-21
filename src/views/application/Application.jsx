@@ -81,7 +81,7 @@ export default function Application() {
     skillsQual: "",
     deadline: "",
     howApply: "",
-    remote: "",
+    remote: false,
     active: true, // toggle to display/validate job object 
   };
 
