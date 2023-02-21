@@ -1,27 +1,31 @@
 import React, { useState } from "react";
-import Box from "@mui/material/Box";
-import Alert from "@mui/material/Alert";
-import Snackbar from "@mui/material/Snackbar";
-import TextField from "@mui/material/TextField";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
-import Divider from "@mui/material/Divider";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import Checkbox from "@mui/material/Checkbox";
-import CardMedia from "@mui/material/CardMedia";
-import Switch from "@mui/material/Switch";
-import Accordion from "@mui/material/Accordion";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import AccordionSummary from "@mui/material/AccordionSummary";
+import {
+  Box,
+  Alert,
+  Snackbar,
+  TextField,
+  Card,
+  CardContent,
+  Button,
+  Typography,
+  Grid,
+  Divider,
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormControl,
+  FormLabel,
+  Checkbox,
+  Switch,
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  FormGroup,
+  CardMedia,
+} from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import FormGroup from "@mui/material/FormGroup";
+import AddIcon from "@mui/icons-material/Add";
+import DeleteIcon from "@mui/icons-material/Delete";
 import "./Application.css";
 //Firebase Imports
 import {
@@ -45,8 +49,6 @@ export default function Application() {
     setShowForm(!showForm);
   };
 
-  // Firebase Integration Below:
-
   /**
    * template application for empty state -- should contain all relevant fields for company application
    */
@@ -63,9 +65,37 @@ export default function Application() {
     envRes: "",
     socImp: "",
     mentor: "",
-    current: "", //Should we create separate object for this? Some companies may not have current openings. Or should we just make the forms fill N/A for all categories within if the switch is false
+    current: {}, //Should we create separate object for this? Some companies may not have current openings. Or should we just make the forms fill N/A for all categories within if the switch is false
     future: "",
     validCode: false,
+  };
+
+  /**
+   * template for job position object
+   */
+  const blankPosition = {
+    jobTitle: "",
+    compensationRange: "",
+    startDate: "",
+    endDate: "",
+    skillsQual: "",
+    deadline: "",
+    howApply: "",
+    remote: "",
+    active: true, // toggle to display/validate job object 
+  };
+
+  /**
+   * adds new position to applicationInfo.current using the length of the object as the key value
+   */
+  const addPosition = () => {
+    setApplicationInfo({
+      ...applicationInfo,
+      current: {
+        ...applicationInfo.current,
+        [Object.keys(applicationInfo.current).length]: blankPosition,
+      },
+    });
   };
 
   /**
@@ -96,6 +126,25 @@ export default function Application() {
   };
 
   /**
+   * input handler for job openings
+   * @param {event} event
+   * @param {int} ind used as the key for application.current object (hopefully a temporary solution -- would be better to create a UUID or something)
+   */
+  const updateJobInfo = (event, ind) => {
+    event.preventDefault();
+    setApplicationInfo({
+      ...applicationInfo,
+      current: {
+        ...applicationInfo.current,
+        [ind]: {
+          ...applicationInfo.current[ind],
+          [event.target.name]: event.target.value,
+        },
+      },
+    });
+  };
+
+  /**
    * checks validation rules against applicationInfo object
    * @returns boolean indicating if form is valid & can be submitted
    */
@@ -118,6 +167,7 @@ export default function Application() {
         .then(() => {
           console.log("successfully submitted application");
           setApplicationInfo(blankApp);
+          setShowForm(false);
           setErrors(
             Object.keys(errors).reduce((acc, key) => {
               acc[key] = false;
@@ -167,6 +217,7 @@ export default function Application() {
   // test-company-2
   // test-william
 
+
   return (
     <>
       <div>
@@ -195,7 +246,7 @@ export default function Application() {
                     label="Appplication Code"
                     variant="outlined"
                     name="applicationId"
-                    onKeyPress={e => e.key === 'Enter' && e.preventDefault()}
+                    onKeyPress={(e) => e.key === "Enter" && e.preventDefault()}
                     value={applicationInfo.applicationId}
                     onChange={handleInput}
                     error={errors.invalidId}
@@ -307,7 +358,11 @@ export default function Application() {
                 >
                   Business Type
                 </FormLabel>
-                <RadioGroup name="radio-buttons-group">
+                <RadioGroup
+                  name="busType"
+                  value={applicationInfo.busType}
+                  onChange={handleInput}
+                >
                   <FormControlLabel
                     value="For Profit"
                     control={<Radio color="secondary" />}
@@ -525,113 +580,215 @@ export default function Application() {
                     />
                   </FormGroup>
                 </FormControl>
+                <br />
                 {showForm && (
-                  <form>
-                    <Card
-                      variant="outlined"
-                      sx={{ minWidth: "60ch", maxWidth: "65ch" }}
+                  <>
+                    <Button
+                      variant="contained"
+                      endIcon={<AddIcon />}
+                      onClick={addPosition}
                     >
-                      <CardContent>
-                        <Box
-                          component="form"
-                          sx={{
-                            "& .MuiTextField-root": { m: 1, width: "60ch" },
-                          }}
-                          noValidate
-                          autoComplete="off"
-                        >
-                          <TextField
-                            id="filled-multiline-static"
-                            label="Job Title"
-                            color="secondary"
-                          />
-                        </Box>
-                        <Box
-                          component="form"
-                          sx={{
-                            "& .MuiTextField-root": { m: 1, width: "60ch" },
-                          }}
-                          noValidate
-                          autoComplete="off"
-                        >
-                          <TextField
-                            id="filled-multiline-static"
-                            label="Compensation Range"
-                            color="secondary"
-                          />
-                        </Box>
-                        <Box
-                          component="form"
-                          sx={{
-                            "& .MuiTextField-root": { m: 1, width: "28.79ch" },
-                          }}
-                          noValidate
-                          autoComplete="off"
-                        >
-                          <TextField
-                            id="filled-multiline-static"
-                            label="Start Date"
-                            color="secondary"
-                          />
-                          <TextField
-                            id="filled-multiline-static"
-                            label="End Date"
-                            color="secondary"
-                          />
-                        </Box>
-                        <Box
-                          component="form"
-                          sx={{
-                            "& .MuiTextField-root": { m: 1, width: "60ch" },
-                          }}
-                          noValidate
-                          autoComplete="off"
-                        >
-                          <TextField
-                            id="filled-multiline-static"
-                            label="Skills and Qualifications"
-                            color="secondary"
-                          />
-                        </Box>
-                        <Box
-                          component="form"
-                          sx={{
-                            "& .MuiTextField-root": { m: 1, width: "60ch" },
-                          }}
-                          noValidate
-                          autoComplete="off"
-                        >
-                          <TextField
-                            id="filled-multiline-static"
-                            label="Deadline"
-                            color="secondary"
-                          />
-                        </Box>
-                        <Box
-                          component="form"
-                          sx={{
-                            "& .MuiTextField-root": { m: 1, width: "60ch" },
-                          }}
-                          noValidate
-                          autoComplete="off"
-                        >
-                          <TextField
-                            id="filled-multiline-static"
-                            label="How to Apply"
-                            color="secondary"
-                          />
-                        </Box>
-                        <div>
-                          <FormControlLabel
-                            control={
-                              <Checkbox defaultChecked color="secondary" />
-                            }
-                            label="Remote Accessibility?"
-                          />
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </form>
+                      Add Position
+                    </Button>
+                    <br />
+                    {Object.values(applicationInfo.current).map((elt, ind) => {
+                      return (
+                        elt.active && (
+                          <div key={`current-position-${ind}`}>
+                            <Card
+                              variant="outlined"
+                              sx={{ minWidth: "60ch", maxWidth: "65ch" }}
+                            >
+                              <CardContent>
+                                <Box
+                                  component="form"
+                                  sx={{
+                                    "& .MuiTextField-root": {
+                                      m: 1,
+                                      width: "60ch",
+                                    },
+                                  }}
+                                  noValidate
+                                  autoComplete="off"
+                                >
+                                  <TextField
+                                    id="filled-multiline-static"
+                                    label="Job Title"
+                                    color="secondary"
+                                    name="jobTitle"
+                                    value={elt.jobTitle}
+                                    onChange={(e) => updateJobInfo(e, ind)}
+                                    disabled={!applicationInfo.validCode}
+                                  />
+                                </Box>
+                                <Box
+                                  component="form"
+                                  sx={{
+                                    "& .MuiTextField-root": {
+                                      m: 1,
+                                      width: "60ch",
+                                    },
+                                  }}
+                                  noValidate
+                                  autoComplete="off"
+                                >
+                                  <TextField
+                                    id="filled-multiline-static"
+                                    label="Compensation Range"
+                                    color="secondary"
+                                    name="compensationRange"
+                                    value={elt.compensationRange}
+                                    onChange={(e) => updateJobInfo(e, ind)}
+                                    disabled={!applicationInfo.validCode}
+                                  />
+                                </Box>
+                                <Box
+                                  component="form"
+                                  sx={{
+                                    "& .MuiTextField-root": {
+                                      m: 1,
+                                      width: "28.79ch",
+                                    },
+                                  }}
+                                  noValidate
+                                  autoComplete="off"
+                                >
+                                  <TextField
+                                    id="filled-multiline-static"
+                                    label="Start Date"
+                                    color="secondary"
+                                    name="startDate"
+                                    value={elt.startDate}
+                                    onChange={(e) => updateJobInfo(e, ind)}
+                                    disabled={!applicationInfo.validCode}
+                                  />
+                                  <TextField
+                                    id="filled-multiline-static"
+                                    label="End Date"
+                                    color="secondary"
+                                    name="endDate"
+                                    value={elt.endDate}
+                                    onChange={(e) => updateJobInfo(e, ind)}
+                                    disabled={!applicationInfo.validCode}
+                                  />
+                                </Box>
+                                <Box
+                                  component="form"
+                                  sx={{
+                                    "& .MuiTextField-root": {
+                                      m: 1,
+                                      width: "60ch",
+                                    },
+                                  }}
+                                  noValidate
+                                  autoComplete="off"
+                                >
+                                  <TextField
+                                    id="filled-multiline-static"
+                                    label="Skills and Qualifications"
+                                    color="secondary"
+                                    name="skillsQual"
+                                    value={elt.skillsQual}
+                                    onChange={(e) => updateJobInfo(e, ind)}
+                                    disabled={!applicationInfo.validCode}
+                                  />
+                                </Box>
+                                <Box
+                                  component="form"
+                                  sx={{
+                                    "& .MuiTextField-root": {
+                                      m: 1,
+                                      width: "60ch",
+                                    },
+                                  }}
+                                  noValidate
+                                  autoComplete="off"
+                                >
+                                  <TextField
+                                    id="filled-multiline-static"
+                                    label="Deadline"
+                                    color="secondary"
+                                    name="deadline"
+                                    value={elt.deadline}
+                                    onChange={(e) => updateJobInfo(e, ind)}
+                                    disabled={!applicationInfo.validCode}
+                                  />
+                                </Box>
+                                <Box
+                                  component="form"
+                                  sx={{
+                                    "& .MuiTextField-root": {
+                                      m: 1,
+                                      width: "60ch",
+                                    },
+                                  }}
+                                  noValidate
+                                  autoComplete="off"
+                                >
+                                  <TextField
+                                    id="filled-multiline-static"
+                                    label="How to Apply"
+                                    color="secondary"
+                                    name="howApply"
+                                    value={elt.howApply}
+                                    onChange={(e) => updateJobInfo(e, ind)}
+                                    disabled={!applicationInfo.validCode}
+                                  />
+                                </Box>
+                                <div>
+                                  <FormControlLabel
+                                    control={
+                                      <Checkbox
+                                        defaultChecked
+                                        color="secondary"
+                                        name="remote"
+                                        value={elt.remote}
+                                        onChange={(event, checked) => {
+                                          event.preventDefault();
+                                          setApplicationInfo({
+                                            ...applicationInfo,
+                                            current: {
+                                              ...applicationInfo.current,
+                                              [ind]: {
+                                                ...applicationInfo.current[ind],
+                                                [event.target.name]: checked,
+                                              },
+                                            },
+                                          });
+                                        }}
+                                        disabled={!applicationInfo.validCode}
+                                      />
+                                    }
+                                    label="Remote Accessibility?"
+                                  />
+                                </div>
+                                <Button
+                                  variant="outlined"
+                                  endIcon={<DeleteIcon />}
+                                  onClick={() => {
+                                    setApplicationInfo({
+                                      ...applicationInfo,
+                                      current: {
+                                        ...applicationInfo.current,
+                                        [ind] : {
+                                          ...applicationInfo.current[ind],
+                                          active: false
+                                        }
+                                      },
+                                    });
+                                    console.log(applicationInfo)
+                                  }}
+                                >
+                                  Delete
+                                </Button>
+                              </CardContent>
+                            </Card>
+                            <br />
+                          </div>
+                        )
+                      );
+                    })}
+                  </>
                 )}
               </div>
             </Typography>
@@ -675,6 +832,9 @@ export default function Application() {
             >
               <b>Submit</b>
             </Button>
+            {/* <Button onClick={() => console.log(applicationInfo)}> // for testing purposes
+              Check Application
+            </Button> */}
             {errors.validation && (
               <Snackbar
                 open={errors.validation}
