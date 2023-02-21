@@ -12,10 +12,6 @@ export default function Home() {
     setList([...updatedList])
   }
   return (
-<<<<<<< HEAD
-    <div>
-      Home testing
-=======
     <div className="home">
       <Header></Header>
       <About></About>
@@ -26,7 +22,6 @@ export default function Home() {
       <div className="our-team">
         {memberList.map((member) => (<Team teamMember = {member}></Team>))}
       </div>
->>>>>>> klee-landing
     </div>
   )
 }
