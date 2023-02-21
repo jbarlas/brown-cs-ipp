@@ -1,0 +1,21 @@
+hr.solid {
+    border-top: 2px solid rgb(212, 211, 211);
+    margin: 5em 25em;
+}
+
+.team-header {
+    margin: 1em 7em; 
+}
+.team-header h2 {
+    font-size: 36px;
+}
+.our-team {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.team-lead h3{
+    margin-bottom: 0px;
+}
+

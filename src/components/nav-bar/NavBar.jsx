@@ -1,7 +1,7 @@
 import React from "react";
 import "./NavBar.css";
 import { Link, NavLink } from "react-router-dom";
-import logo from '../../assets/ipp-logo.png'
+import logo from './images/ipp-logo.png'
 
 export default function NavBar() {
   return (
