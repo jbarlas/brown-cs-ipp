@@ -150,7 +150,12 @@ export default function Application() {
    */
   const validateForm = () => {
     // Object.values(applicationInfo).every((x) => !!x) // checks to see if all values are not empty
-    return applicationInfo.validCode && applicationInfo.name !== ""; // right now, only checks for valid code and name !== ""
+    return applicationInfo.validCode && applicationInfo.name !== "" 
+    && applicationInfo.industry !== "" && applicationInfo.website !== ""
+    && applicationInfo.size !== "" && applicationInfo.locations !== ""
+    && applicationInfo.busType !== "" && applicationInfo.mission !== ""
+    && applicationInfo.dei !== "" && applicationInfo.envRes !== ""
+    && applicationInfo.socImp !== "" && applicationInfo.mentor !== ""; 
   };
 
   /**
