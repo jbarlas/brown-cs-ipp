@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.15d6155c.css",
+    "main.js": "/static/js/main.99109bb5.js",
+    "static/media/ipp-landing-bg.png": "/static/media/ipp-landing-bg.7a9cb7d325064a71c2ed.png",
+    "static/media/appbg.png": "/static/media/appbg.1db75b55c53ef7be38d0.png",
+    "static/media/badges.png": "/static/media/badges.d861c03de652f9817d74.png",
+    "static/media/duolingo_logo.png": "/static/media/duolingo_logo.116d1634740704169386.png",
+    "static/media/ipp-logo.png": "/static/media/ipp-logo.7c847c358108bc846488.png",
+    "static/media/Deloitte_Logo.jpg": "/static/media/Deloitte_Logo.61e604577f1ee53567c5.jpg",
+    "index.html": "/index.html",
+    "main.15d6155c.css.map": "/static/css/main.15d6155c.css.map",
+    "main.99109bb5.js.map": "/static/js/main.99109bb5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.15d6155c.css",
+    "static/js/main.99109bb5.js"
+  ]
+}
