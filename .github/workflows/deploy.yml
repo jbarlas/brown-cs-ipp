@@ -50,7 +50,7 @@ jobs:
         echo "Testing multiple lines"
         echo "$REACT_APP_SECRET"
     - name: Testing outside of context
-      run: echo "$REACT_APP_SECRET"
+      run: echo "pls work $REACT_APP_SECRET"
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
