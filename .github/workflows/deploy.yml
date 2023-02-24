@@ -39,12 +39,14 @@ jobs:
       run: |
         npm install
         npm run build
+        echo "$REACT_APP_secret"
       env:
         REACT_APP_firebase_apiKey: ${{ secrets.REACT_APP_FIREBASE_APIKEY }}
         REACT_APP_firebase_appId: ${{ secrets.REACT_APP_FIREBASE_APPID }}
         REACT_APP_firebase_messagingSenderId: ${{ secrets.REACT_APP_FIREBASE_MESSAGINGSENDERID }}
         REACT_APP_firebase_measurementId: ${{ secrets.REACT_APP_FIREBASE_MEASUREMENTID }}
         REACT_APP_firebase_databaseURL: ${{ secrets.REACT_APP_FIREBASE_DATABASEURL }}
+        REACT_APP_secret: ${{ secrets.REACT_APP_SECRET }}
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
