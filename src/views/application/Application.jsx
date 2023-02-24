@@ -225,7 +225,7 @@ export default function Application() {
 
   return (
     <>
-      <div>
+      <div style={{ background: '#f5f5f5' }}>
         <div className="code-block" align="center">
           <br></br>
           <br></br>
@@ -418,7 +418,7 @@ export default function Application() {
               <b>Values</b>
             </Typography>
           </div>
-          <div className="badges">
+          <div>
             <br></br>
             <CardMedia
               component="img"
@@ -439,6 +439,10 @@ export default function Application() {
               <Accordion
                 expanded={expanded === "panel1"}
                 onChange={handleChange("panel1")}
+                sx={{
+                  maxWidth: '100ch',
+                  minHeight: '8ch',
+                }}
               >
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
@@ -469,6 +473,10 @@ export default function Application() {
                 </AccordionDetails>
               </Accordion>
               <Accordion
+              sx={{
+                maxWidth: '100ch',
+                minHeight: '8ch',
+              }}
                 expanded={expanded === "panel2"}
                 onChange={handleChange("panel2")}
               >
@@ -500,6 +508,10 @@ export default function Application() {
                 </AccordionDetails>
               </Accordion>
               <Accordion
+              sx={{
+                maxWidth: '100ch',
+                minHeight: '8ch',
+              }}
                 expanded={expanded === "panel3"}
                 onChange={handleChange("panel3")}
               >
@@ -531,6 +543,10 @@ export default function Application() {
                 </AccordionDetails>
               </Accordion>
               <Accordion
+              sx={{
+                maxWidth: '100ch',
+                minHeight: '8ch',
+              }}
                 expanded={expanded === "panel4"}
                 onChange={handleChange("panel4")}
               >

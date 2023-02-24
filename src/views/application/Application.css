@@ -15,3 +15,11 @@
     height: 100%;
 }
 
+.apply-page {
+    background: #f34949; /* replace with your preferred color or image */
+    padding: 20px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
