@@ -39,7 +39,7 @@ jobs:
       run: |
         npm install
         npm run build
-        echo "$REACT_APP_SECRET"
+        echo ${{ secrets.REACT_APP_SECRET }}
       env:
         REACT_APP_firebase_apiKey: ${{ secrets.REACT_APP_FIREBASE_APIKEY }}
         REACT_APP_firebase_appId: ${{ secrets.REACT_APP_FIREBASE_APPID }}
