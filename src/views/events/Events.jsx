@@ -16,7 +16,6 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
-import AspectRatio from '@mui/joy/AspectRatio';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -268,7 +267,7 @@ export default function Events() {
       <div id='subheading' align="center">
         <h2>IPP Events Calendar</h2>
       </div>
-      <div id='gcal' align="center"><iframe src="https://calendar.google.com/calendar/embed?src=c_fd7cdd4a776df9bc604b0cb9971348a49bd1a40ff03543ba97718a16a81a4c86%40group.calendar.google.com&ctz=America%2FNew_York" width="800" height="600" frameborder="0" scrolling="no"></iframe></div>
+      <div id='gcal' align="center"><iframe title="gcal" src="https://calendar.google.com/calendar/embed?src=c_fd7cdd4a776df9bc604b0cb9971348a49bd1a40ff03543ba97718a16a81a4c86%40group.calendar.google.com&ctz=America%2FNew_York" width="800" height="600" frameborder="0" scrolling="no"></iframe></div>
       
     </div>
 
