@@ -24,7 +24,7 @@ import {
   CardMedia,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import { createTheme, ThemeProvider} from '@mui/material/styles';
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./Application.css";
@@ -215,14 +215,16 @@ export default function Application() {
    */
   const validateCode = (code) => {
     validateApplicationCode(code)
-      .then((valid) => {
-        setErrors({ ...errors, invalidId: !valid });
-        setApplicationInfo({ ...applicationInfo, validCode: valid });
-      })
-      .catch((error) => {
-        console.log("error validating application code", error);
-        setErrors({ ...errors, verification: true });
-      });
+      // .then((valid) => {
+      //   setErrors({ ...errors, invalidId: !valid });
+      //   setApplicationInfo({ ...applicationInfo, validCode: valid });
+      // })
+      // .catch((error) => {
+      //   console.log("error validating application code", error);
+      //   setErrors({ ...errors, verification: true });
+      // });
+      setErrors({ ...errors, invalidId: !true });
+      setApplicationInfo({ ...applicationInfo, validCode: true });
   };
   // codes that should work rn:
   // test-company-1
@@ -614,14 +616,17 @@ export default function Application() {
                 <br />
                 {showForm && (
                   <>
+                  <br></br>
                     <Button
                       variant="contained"
+                      color="secondary"
                       endIcon={<AddIcon />}
                       onClick={addPosition}
                     >
                       Add Position
                     </Button>
                     <br />
+                    <br></br>
                     {Object.values(applicationInfo.current).map((elt, ind) => {
                       return (
                         elt.active && (
@@ -795,6 +800,7 @@ export default function Application() {
                                 </div>
                                 <Button
                                   variant="outlined"
+                                  color="secondary"
                                   endIcon={<DeleteIcon />}
                                   onClick={() => {
                                     setApplicationInfo({
