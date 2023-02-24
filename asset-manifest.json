@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/brown-cs-ipp/static/css/main.eef0f3fb.css",
-    "main.js": "/brown-cs-ipp/static/js/main.700aae98.js",
+    "main.js": "/brown-cs-ipp/static/js/main.fe769659.js",
     "static/media/ipp-landing-bg.png": "/brown-cs-ipp/static/media/ipp-landing-bg.7a9cb7d325064a71c2ed.png",
     "static/media/appbg.png": "/brown-cs-ipp/static/media/appbg.1db75b55c53ef7be38d0.png",
     "static/media/badges.png": "/brown-cs-ipp/static/media/badges.d861c03de652f9817d74.png",
@@ -10,10 +10,10 @@
     "static/media/Deloitte_Logo.jpg": "/brown-cs-ipp/static/media/Deloitte_Logo.61e604577f1ee53567c5.jpg",
     "index.html": "/brown-cs-ipp/index.html",
     "main.eef0f3fb.css.map": "/brown-cs-ipp/static/css/main.eef0f3fb.css.map",
-    "main.700aae98.js.map": "/brown-cs-ipp/static/js/main.700aae98.js.map"
+    "main.fe769659.js.map": "/brown-cs-ipp/static/js/main.fe769659.js.map"
   },
   "entrypoints": [
     "static/css/main.eef0f3fb.css",
-    "static/js/main.700aae98.js"
+    "static/js/main.fe769659.js"
   ]
 }
