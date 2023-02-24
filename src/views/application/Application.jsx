@@ -215,16 +215,14 @@ export default function Application() {
    */
   const validateCode = (code) => {
     validateApplicationCode(code)
-      // .then((valid) => {
-      //   setErrors({ ...errors, invalidId: !valid });
-      //   setApplicationInfo({ ...applicationInfo, validCode: valid });
-      // })
-      // .catch((error) => {
-      //   console.log("error validating application code", error);
-      //   setErrors({ ...errors, verification: true });
-      // });
-      setErrors({ ...errors, invalidId: !true });
-      setApplicationInfo({ ...applicationInfo, validCode: true });
+      .then((valid) => {
+        setErrors({ ...errors, invalidId: !valid });
+        setApplicationInfo({ ...applicationInfo, validCode: valid });
+      })
+      .catch((error) => {
+        console.log("error validating application code", error);
+        setErrors({ ...errors, verification: error });
+      });
   };
   // codes that should work rn:
   // test-company-1
@@ -262,6 +260,7 @@ export default function Application() {
                     label="Appplication Code"
                     variant="outlined"
                     name="applicationId"
+                    color="secondary"
                     onKeyPress={(e) => e.key === "Enter" && e.preventDefault()}
                     value={applicationInfo.applicationId}
                     onChange={handleInput}
