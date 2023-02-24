@@ -3,6 +3,9 @@
 # env (used for firebase credential storage)
 .env
 
+# VS Code preferences
+.vs
+
 # dependencies
 /node_modules
 /.pnp
