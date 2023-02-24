@@ -24,6 +24,7 @@ import {
   CardMedia,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./Application.css";
@@ -32,6 +33,12 @@ import {
   submitCompanyApplication,
   validateApplicationCode,
 } from "../../firebase/utils";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: 'Circular Std',
+  },
+});
 
 export default function Application() {
   const [expanded, setExpanded] = React.useState(false);
@@ -225,6 +232,9 @@ export default function Application() {
 
   return (
     <>
+    <ThemeProvider theme={theme}>
+    
+    
       <div style={{ background: '#f5f5f5' }}>
         <div className="code-block" align="center">
           <br></br>
@@ -901,6 +911,7 @@ export default function Application() {
           </div>
         </div>
       </div>
+      </ThemeProvider>
     </>
   );
 }
