@@ -40,19 +40,13 @@ jobs:
         npm install
         npm run build
       env:
-        REACT_APP_firebase_apiKey: ${{ secrets.REACT_APP_firebase_apiKey }}
-        REACT_APP_firebase_appId: ${{ secrets.REACT_APP_firebase_appId }}
-        REACT_APP_firebase_messagingSenderId: ${{ secrets.REACT_APP_firebase_messagingSenderId }}
-        REACT_APP_firebase_measurementId: ${{ secrets.REACT_APP_firebase_measurementId }}
-        REACT_APP_firebase_databaseURL: ${{ secrets.REACT_APP_firebase_databaseURL }}
+        REACT_APP_firebase_apiKey: ${{ secrets.REACT_APP_FIREBASE_APIKEY }}
+        REACT_APP_firebase_appId: ${{ secrets.REACT_APP_FIREBASE_APPID }}
+        REACT_APP_firebase_messagingSenderId: ${{ secrets.REACT_APP_FIREBASE_MESSAGINGSENDERID }}
+        REACT_APP_firebase_measurementId: ${{ secrets.REACT_APP_FIREBASE_MEASUREMENTID }}
+        REACT_APP_firebase_databaseURL: ${{ secrets.REACT_APP_FIREBASE_DATABASEURL }}
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
-      env:
-        REACT_APP_firebase_apiKey: ${{ secrets.REACT_APP_firebase_apiKey }}
-        REACT_APP_firebase_appId: ${{ secrets.REACT_APP_firebase_appId }}
-        REACT_APP_firebase_messagingSenderId: ${{ secrets.REACT_APP_firebase_messagingSenderId }}
-        REACT_APP_firebase_measurementId: ${{ secrets.REACT_APP_firebase_measurementId }}
-        REACT_APP_firebase_databaseURL: ${{ secrets.REACT_APP_firebase_databaseURL }}
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./build
