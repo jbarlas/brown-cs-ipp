@@ -235,9 +235,8 @@ export default function Application() {
   return (
     <>
     <ThemeProvider theme={theme}>
-    
-    
-      <div style={{ background: '#f5f5f5' }}>
+
+      <div>
         <div className="code-block" align="center">
           <br></br>
           <br></br>
@@ -300,8 +299,9 @@ export default function Application() {
         </div>
         <br></br>
         <Divider />
+        
+        <div id="form" align="center" style={{background: '#fafafa', margin: '0 15%', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)'}}>
         <br></br>
-        <div id="form" align="center">
           <Typography variant="body2">
             To apply to become a partner, please provide the following details
             so we can best inform our students about your job opportunities.
@@ -452,7 +452,7 @@ export default function Application() {
                 expanded={expanded === "panel1"}
                 onChange={handleChange("panel1")}
                 sx={{
-                  maxWidth: '100ch',
+                  maxWidth: '80ch',
                   minHeight: '8ch',
                 }}
               >
@@ -486,7 +486,7 @@ export default function Application() {
               </Accordion>
               <Accordion
               sx={{
-                maxWidth: '100ch',
+                maxWidth: '80ch',
                 minHeight: '8ch',
               }}
                 expanded={expanded === "panel2"}
@@ -521,7 +521,7 @@ export default function Application() {
               </Accordion>
               <Accordion
               sx={{
-                maxWidth: '100ch',
+                maxWidth: '80ch',
                 minHeight: '8ch',
               }}
                 expanded={expanded === "panel3"}
@@ -556,7 +556,7 @@ export default function Application() {
               </Accordion>
               <Accordion
               sx={{
-                maxWidth: '100ch',
+                maxWidth: '80ch',
                 minHeight: '8ch',
               }}
                 expanded={expanded === "panel4"}
@@ -640,8 +640,8 @@ export default function Application() {
                                   component="form"
                                   sx={{
                                     "& .MuiTextField-root": {
-                                      m: 1,
-                                      width: "60ch",
+                                      m: 2,
+                                      width: "28.623ch",
                                     },
                                   }}
                                   noValidate
@@ -656,18 +656,6 @@ export default function Application() {
                                     onChange={(e) => updateJobInfo(e, ind)}
                                     disabled={!applicationInfo.validCode}
                                   />
-                                </Box>
-                                <Box
-                                  component="form"
-                                  sx={{
-                                    "& .MuiTextField-root": {
-                                      m: 1,
-                                      width: "60ch",
-                                    },
-                                  }}
-                                  noValidate
-                                  autoComplete="off"
-                                >
                                   <TextField
                                     id="filled-multiline-static"
                                     label="Compensation Range"
@@ -682,8 +670,8 @@ export default function Application() {
                                   component="form"
                                   sx={{
                                     "& .MuiTextField-root": {
-                                      m: 1,
-                                      width: "28.79ch",
+                                      m: 2,
+                                      width: "28.623ch",
                                     },
                                   }}
                                   noValidate
