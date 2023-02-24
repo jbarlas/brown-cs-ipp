@@ -34,7 +34,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: "/brown-cs-ipp",
+    basename: process.env.PUBLIC_URL,
   }
 );
 
