@@ -1,0 +1,35 @@
+body {
+    font-family: "Montserrat";
+}
+
+h1 {
+    font-family: "Montserrat";
+    font-size: 55px;
+    font-weight:900;
+}
+
+h2 {
+    font-family: "Montserrat";
+    font-size: 50px;
+    font-weight:800;
+}
+
+.home_badge_div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.home_badge {
+    height: 200px;
+    width: 200px;
+    /* horizontal, vertical, blur, spread */
+    /* ah, this doesn't work as intended. maybe get herbert to send me a version with the shadow built in */
+    box-shadow: 10px 10px 5px 12px lightblue;
+}
+
+.home_splash {
+    height: 600px;
+    /* width: 700px; */
+}
+/* .home_about_div {} */

@@ -55,6 +55,60 @@ export default function Partners() {
         "description": "Duolingo is an American educational technology company which produces learning apps and provides language certification.",
         "industry": "Education",
         "profit": "For Profit"
+      },
+      {
+        "name": "Duolingo",
+        // "logo": {company_logo},
+        "location": "PN, USA",
+        "size": "500+ Employees",
+        "description": "Duolingo is an American educational technology company which produces learning apps and provides language certification.",
+        "industry": "Education",
+        "profit": "For Profit"
+      },
+      {
+        "name": "Duolingo",
+        // "logo": {company_logo},
+        "location": "PN, USA",
+        "size": "500+ Employees",
+        "description": "Duolingo is an American educational technology company which produces learning apps and provides language certification.",
+        "industry": "Education",
+        "profit": "For Profit"
+      },
+      {
+        "name": "Duolingo",
+        // "logo": {company_logo},
+        "location": "PN, USA",
+        "size": "500+ Employees",
+        "description": "Duolingo is an American educational technology company which produces learning apps and provides language certification.",
+        "industry": "Education",
+        "profit": "For Profit"
+      },
+      {
+        "name": "Duolingo",
+        // "logo": {company_logo},
+        "location": "PN, USA",
+        "size": "500+ Employees",
+        "description": "Duolingo is an American educational technology company which produces learning apps and provides language certification.",
+        "industry": "Education",
+        "profit": "For Profit"
+      },
+      {
+        "name": "Duolingo",
+        // "logo": {company_logo},
+        "location": "PN, USA",
+        "size": "500+ Employees",
+        "description": "Duolingo is an American educational technology company which produces learning apps and provides language certification.",
+        "industry": "Education",
+        "profit": "For Profit"
+      },
+      {
+        "name": "Duolingo",
+        // "logo": {company_logo},
+        "location": "PN, USA",
+        "size": "500+ Employees",
+        "description": "Duolingo is an American educational technology company which produces learning apps and provides language certification.",
+        "industry": "Education",
+        "profit": "For Profit"
       }
     ]
   
