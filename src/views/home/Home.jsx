@@ -9,11 +9,11 @@ import BadgeGrowth from '../../assets/ipp_badge_growth.png'
 import BadgeEnviro from '../../assets/ipp_badge_enviro.png'
 import HomeSplash from '../../assets/home_splash.png'
 
-import Charlotte from '../../assets/Charlotte_Picture.png'
-import Herbert from '../../assets/Herbert_Picture.png'
-import Kendra from '../../assets/Kendra_Picture.png'
-import ZeHua from '../../assets/ZeHua_Picture.png'
-import Stephanie from '../../assets/Stephanie_Picture.png'
+import Charlotte from '../../assets/Charlotte_Picture.jpg'
+import Herbert from '../../assets/Herbert_Picture.jpg'
+import Kendra from '../../assets/Kendra_Picture.jpg'
+import ZeHua from '../../assets/Ze_Hua_Picture.jpg'
+import Stephanie from '../../assets/Stephanie_Picture.jpg'
 import Justin from '../../assets/ipp_badge_social.png'
 
 
