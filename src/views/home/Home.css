@@ -1,15 +1,15 @@
 body {
-    font-family: "Montserrat";
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
 }
 
 h1 {
-    font-family: "Montserrat";
     font-size: 55px;
-    font-weight:900;
+    font-weight:800;
 }
 
 h2 {
-    font-family: "Montserrat";
     font-size: 50px;
     font-weight:800;
 }
@@ -18,18 +18,85 @@ h2 {
     display: flex;
     align-items: center;
     flex-direction: column;
+    text-align: center;
 }
 
 .home_badge {
     height: 200px;
     width: 200px;
-    /* horizontal, vertical, blur, spread */
-    /* ah, this doesn't work as intended. maybe get herbert to send me a version with the shadow built in */
-    box-shadow: 10px 10px 5px 12px lightblue;
+    /* offset-x, offset-y, blur, color */
+    filter: drop-shadow(15px 5px 2px rgb(197, 197, 197));
+}
+
+.home_badge_text {
+    font-size: 15px;
+    font-weight: 400;
 }
 
 .home_splash {
     height: 600px;
-    /* width: 700px; */
+    width: 712px;
+    /* margin-top: 1.42rem; */
 }
-/* .home_about_div {} */
+
+.home_about_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.home_about_text {
+    text-align: center;
+    width: 520px;
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.home_about_title {
+    margin: 0;
+    width: 250px;
+}
+
+.home_divider_div {
+    display: flex;
+    /* justify-content: center; */
+    text-align: center;
+}
+
+.home_dividers {
+    background-color: black;
+    width: 10px;
+    height: 600px;
+    margin: 0;
+}
+
+.home_divider_div_h {
+    display: flex;
+    text-align: center;
+    margin: 2rem;
+}
+
+.home_dividers_h {
+    background-color: black;
+    width: 700px;
+    height: 10px;
+    margin: 0;
+}
+
+.home_staff_portrait_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.home_staff_portrait_picture {
+    height: 200px;
+    width: 200px;
+}
+
+.home_staff_text {
+    width: 500px;
+    font-weight: 300;
+}
