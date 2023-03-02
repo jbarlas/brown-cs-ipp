@@ -24,9 +24,11 @@ import {
   CardMedia,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { createTheme, ThemeProvider} from '@mui/material/styles';
+import { createTheme, ThemeProvider, alpha, styled } from '@mui/material/styles';
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
+import InputBase from '@mui/material/InputBase';
+import InputLabel from '@mui/material/InputLabel';
 import "./Application.css";
 //Firebase Imports
 import {
@@ -39,6 +41,25 @@ const theme = createTheme({
     fontFamily: 'Circular Std',
   },
 });
+
+const PositionTextField = styled((props) => (
+  <TextField InputProps={{ disableUnderline: true }} {...props} />
+))(({ theme }) => ({
+  '& .MuiFilledInput-root': {
+    backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2b2b2b',
+    transition: theme.transitions.create([
+      'background-color',
+    ]),
+    '&:hover': {
+      backgroundColor: 'white',
+    },
+    '&.Mui-focused': {
+      backgroundColor: 'white',
+    },
+  },
+}));
+
+
 
 export default function Application() {
   const [expanded, setExpanded] = React.useState(false);
@@ -215,14 +236,16 @@ export default function Application() {
    */
   const validateCode = (code) => {
     validateApplicationCode(code)
-      .then((valid) => {
-        setErrors({ ...errors, invalidId: !valid });
-        setApplicationInfo({ ...applicationInfo, validCode: valid });
-      })
-      .catch((error) => {
-        console.log("error validating application code", error);
-        setErrors({ ...errors, verification: error });
-      });
+      // .then((valid) => {
+      //   setErrors({ ...errors, invalidId: !valid });
+      //   setApplicationInfo({ ...applicationInfo, validCode: valid });
+      // })
+      // .catch((error) => {
+      //   console.log("error validating application code", error);
+      //   setErrors({ ...errors, verification: error });
+      // });
+      setErrors({ ...errors, invalidId: false });
+      setApplicationInfo({ ...applicationInfo, validCode: true });
   };
   // codes that should work rn:
   // test-company-1
@@ -318,7 +341,7 @@ export default function Application() {
               <TextField
                 id="outlined-multiline-flexible"
                 label="Company Name"
-                color="secondary"
+                //color="secondary"
                 name="name"
                 value={applicationInfo.name}
                 onChange={handleInput}
@@ -327,7 +350,7 @@ export default function Application() {
               <TextField
                 id="outlined-textarea"
                 label="Industry"
-                color="secondary"
+                //color="secondary"
                 name="industry"
                 value={applicationInfo.industry}
                 onChange={handleInput}
@@ -338,7 +361,7 @@ export default function Application() {
               <TextField
                 id="standard-basic"
                 label="Website"
-                color="secondary"
+                //color="secondary"
                 name="website"
                 value={applicationInfo.website}
                 onChange={handleInput}
@@ -347,7 +370,7 @@ export default function Application() {
               <TextField
                 id="filled-multiline-flexible"
                 label="Size (Employees)"
-                color="secondary"
+                //color="secondary"
                 name="size"
                 value={applicationInfo.size}
                 onChange={handleInput}
@@ -360,17 +383,17 @@ export default function Application() {
                 id="filled-textarea"
                 label="Office Locations"
                 placeholder="Providence"
-                color="secondary"
+                //color="secondary"
                 name="locations"
                 value={applicationInfo.locations}
                 onChange={handleInput}
                 disabled={!applicationInfo.validCode}
               />
-              {"\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0"}
+              {"\u00a0\u00a0\u00a0\u00a0\u00a0"}
               <FormControl disabled={!applicationInfo.validCode}>
                 <FormLabel
                   id="demo-radio-buttons-group-label"
-                  color="secondary"
+                  //color="secondary"
                 >
                   Business Type
                 </FormLabel>
@@ -381,32 +404,28 @@ export default function Application() {
                 >
                   <FormControlLabel
                     value="For Profit"
-                    control={<Radio color="secondary" />}
+                    control={<Radio />}
                     label="For Profit"
                   />
                   <FormControlLabel
-                    value="Not For Profit"
-                    control={<Radio color="secondary" />}
-                    label="Not For Profit"
-                  />
-                  <FormControlLabel
                     value="Non-Profit"
-                    control={<Radio color="secondary" />}
+                    control={<Radio />}
                     label="Non-Profit"
                   />
                 </RadioGroup>
               </FormControl>
               {
-                "\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0"
+                "\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0"
               }
             </div>
           </Box>
 
           <div>
+            <br></br>
             <Box
               component="form"
               sx={{
-                "& .MuiTextField-root": { m: 1, width: "60ch" },
+                "& .MuiTextField-root": { m: 1, width: "54ch" },
               }}
               noValidate
               autoComplete="off"
@@ -414,7 +433,7 @@ export default function Application() {
               <TextField
                 id="filled-multiline-static"
                 label="Mission Statement"
-                color="secondary"
+                //color="secondary"
                 multiline
                 rows={4}
                 name="mission"
@@ -472,7 +491,7 @@ export default function Application() {
                 <AccordionDetails>
                   <TextField
                     id="filled-multiline-static"
-                    color="secondary"
+                    //color="secondary"
                     label="Response"
                     multiline
                     rows={4}
@@ -507,7 +526,7 @@ export default function Application() {
                 <AccordionDetails>
                   <TextField
                     id="filled-multiline-static"
-                    color="secondary"
+                    //color="secondary"
                     label="Response"
                     multiline
                     rows={4}
@@ -542,7 +561,7 @@ export default function Application() {
                 <AccordionDetails>
                   <TextField
                     id="filled-multiline-static"
-                    color="secondary"
+                    //color="secondary"
                     label="Response"
                     multiline
                     rows={4}
@@ -577,7 +596,7 @@ export default function Application() {
                 <AccordionDetails>
                   <TextField
                     id="filled-multiline-static"
-                    color="secondary"
+                    //color="secondary"
                     label="Response"
                     multiline
                     rows={4}
@@ -603,7 +622,7 @@ export default function Application() {
                     <FormControlLabel
                       control={
                         <Switch
-                          color="secondary"
+                          //color="secondary"
                           checked={showForm}
                           onChange={handleToggle}
                         />
@@ -618,7 +637,7 @@ export default function Application() {
                   <br></br>
                     <Button
                       variant="contained"
-                      color="secondary"
+                      //color="secondary"
                       endIcon={<AddIcon />}
                       onClick={addPosition}
                     >
@@ -632,6 +651,7 @@ export default function Application() {
                           <div key={`current-position-${ind}`}>
                             <Card
                               variant="outlined"
+                              style={{backgroundColor: "#193AA5"}}
                               sx={{ minWidth: "60ch", maxWidth: "65ch" }}
                             >
                               <CardContent>
@@ -646,19 +666,21 @@ export default function Application() {
                                   noValidate
                                   autoComplete="off"
                                 >
-                                  <TextField
+                                  <PositionTextField
                                     id="filled-multiline-static"
                                     label="Job Title"
-                                    color="secondary"
+                                    //color="secondary"
+                                    variant="filled"
                                     name="jobTitle"
                                     value={elt.jobTitle}
                                     onChange={(e) => updateJobInfo(e, ind)}
                                     disabled={!applicationInfo.validCode}
                                   />
-                                  <TextField
+                                  <PositionTextField
                                     id="filled-multiline-static"
                                     label="Compensation Range"
-                                    color="secondary"
+                                    //color="secondary"
+                                    variant="filled"
                                     name="compensationRange"
                                     value={elt.compensationRange}
                                     onChange={(e) => updateJobInfo(e, ind)}
@@ -676,20 +698,22 @@ export default function Application() {
                                   noValidate
                                   autoComplete="off"
                                 >
-                                  <TextField
+                                  <PositionTextField
                                     id="filled-multiline-static"
                                     label="Start Date"
-                                    color="secondary"
+                                    //color="secondary"
+                                    variant="filled"
                                     name="startDate"
                                     value={elt.startDate}
                                     onChange={(e) => updateJobInfo(e, ind)}
                                     disabled={!applicationInfo.validCode}
                                   />
-                                  <TextField
+                                  <PositionTextField
                                     id="filled-multiline-static"
                                     label="End Date"
-                                    color="secondary"
+                                    //color="secondary"
                                     name="endDate"
+                                    variant="filled"
                                     value={elt.endDate}
                                     onChange={(e) => updateJobInfo(e, ind)}
                                     disabled={!applicationInfo.validCode}
@@ -706,11 +730,12 @@ export default function Application() {
                                   noValidate
                                   autoComplete="off"
                                 >
-                                  <TextField
+                                  <PositionTextField
                                     id="filled-multiline-static"
                                     label="Skills and Qualifications"
-                                    color="secondary"
+                                    //color="secondary"
                                     name="skillsQual"
+                                    variant="filled"
                                     value={elt.skillsQual}
                                     onChange={(e) => updateJobInfo(e, ind)}
                                     disabled={!applicationInfo.validCode}
@@ -727,10 +752,11 @@ export default function Application() {
                                   noValidate
                                   autoComplete="off"
                                 >
-                                  <TextField
+                                  <PositionTextField
                                     id="filled-multiline-static"
                                     label="Deadline"
-                                    color="secondary"
+                                    //color="secondary"
+                                    variant="filled"
                                     name="deadline"
                                     value={elt.deadline}
                                     onChange={(e) => updateJobInfo(e, ind)}
@@ -748,11 +774,12 @@ export default function Application() {
                                   noValidate
                                   autoComplete="off"
                                 >
-                                  <TextField
+                                  <PositionTextField
                                     id="filled-multiline-static"
                                     label="How to Apply"
-                                    color="secondary"
+                                    //color="secondary"
                                     name="howApply"
+                                    variant="filled"
                                     value={elt.howApply}
                                     onChange={(e) => updateJobInfo(e, ind)}
                                     disabled={!applicationInfo.validCode}
@@ -763,7 +790,7 @@ export default function Application() {
                                     control={
                                       <Checkbox
                                         defaultChecked
-                                        color="secondary"
+                                        //color="secondary"
                                         name="remote"
                                         value={elt.remote}
                                         onChange={(event, checked) => {
@@ -787,7 +814,7 @@ export default function Application() {
                                 </div>
                                 <Button
                                   variant="outlined"
-                                  color="secondary"
+                                  //color="secondary"
                                   endIcon={<DeleteIcon />}
                                   onClick={() => {
                                     setApplicationInfo({
@@ -838,7 +865,7 @@ export default function Application() {
             >
               <TextField
                 id="filled-multiline-static"
-                color="secondary"
+                //color="secondary"
                 multiline
                 rows={4}
                 name="future"
@@ -850,7 +877,7 @@ export default function Application() {
             <br></br>
             <Button
               variant="contained"
-              color={errors.validation ? "error" : "secondary"}
+              color={errors.validation ? "error" : "primary"}
               onClick={submitForm}
               disabled={!applicationInfo.validCode}
             >
