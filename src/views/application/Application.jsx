@@ -261,16 +261,16 @@ export default function Application() {
    */
   const validateCode = (code) => {
     validateApplicationCode(code)
-      // .then((valid) => {
-      //   setErrors({ ...errors, invalidId: !valid });
-      //   setApplicationInfo({ ...applicationInfo, validCode: valid });
-      // })
-      // .catch((error) => {
-      //   console.log("error validating application code", error);
-      //   setErrors({ ...errors, verification: error });
-      // });
-      setErrors({ ...errors, invalidId: false });
-      setApplicationInfo({ ...applicationInfo, validCode: true });
+      .then((valid) => {
+        setErrors({ ...errors, invalidId: !valid });
+        setApplicationInfo({ ...applicationInfo, validCode: valid });
+      })
+      .catch((error) => {
+        console.log("error validating application code", error);
+        setErrors({ ...errors, verification: error });
+      });
+      // setErrors({ ...errors, invalidId: false });
+      // setApplicationInfo({ ...applicationInfo, validCode: true });
   };
   // codes that should work rn:
   // test-company-1
