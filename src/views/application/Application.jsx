@@ -27,8 +27,9 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { createTheme, ThemeProvider, alpha, styled } from '@mui/material/styles';
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
-import InputBase from '@mui/material/InputBase';
-import InputLabel from '@mui/material/InputLabel';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import "./Application.css";
 //Firebase Imports
 import {
@@ -36,11 +37,23 @@ import {
   validateApplicationCode,
 } from "../../firebase/utils";
 
+
+
 const theme = createTheme({
   typography: {
-    fontFamily: 'Circular Std',
+    fontFamily: "franklin-gothic-atf",
+    fontWeight: 200,
+  },
+  palette: {
+    primary: {
+      main: '#193AA5',
+    },
+    secondary: {
+      main: '#FFFFFF',
+    },
   },
 });
+
 
 const PositionTextField = styled((props) => (
   <TextField InputProps={{ disableUnderline: true }} {...props} />
@@ -67,6 +80,15 @@ export default function Application() {
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
+
+  /**Start Date Handler */
+  const [startDate, setValue] = React.useState(null);
+
+  /**End Date Handler */
+  const [endDate, setValue2] = React.useState(null);
+
+   /**Deadline Handler */
+   const [deadline, setValue3] = React.useState(null);
 
   /**
    * Functions for Current Openings Toggle Button
@@ -159,6 +181,7 @@ export default function Application() {
    * @param {int} ind used as the key for application.current object (hopefully a temporary solution -- would be better to create a UUID or something)
    */
   const updateJobInfo = (event, ind) => {
+    if (event) {
     event.preventDefault();
     setApplicationInfo({
       ...applicationInfo,
@@ -170,6 +193,7 @@ export default function Application() {
         },
       },
     });
+  }
   };
 
   /**
@@ -280,10 +304,10 @@ export default function Application() {
                 >
                   <TextField
                     id="outlined-basic"
-                    label="Appplication Code"
+                    label="Application Code"
                     variant="outlined"
                     name="applicationId"
-                    color="secondary"
+                    //color="secondary"
                     onKeyPress={(e) => e.key === "Enter" && e.preventDefault()}
                     value={applicationInfo.applicationId}
                     onChange={handleInput}
@@ -300,7 +324,7 @@ export default function Application() {
                 </Box>
                 <Button
                   variant="contained"
-                  color="success"
+                  //color="success"
                   onClick={() => validateCode(applicationInfo.applicationId)}
                 >
                   Validate
@@ -698,7 +722,7 @@ export default function Application() {
                                   noValidate
                                   autoComplete="off"
                                 >
-                                  <PositionTextField
+                                  {/* <PositionTextField
                                     id="filled-multiline-static"
                                     label="Start Date"
                                     //color="secondary"
@@ -707,8 +731,17 @@ export default function Application() {
                                     value={elt.startDate}
                                     onChange={(e) => updateJobInfo(e, ind)}
                                     disabled={!applicationInfo.validCode}
-                                  />
-                                  <PositionTextField
+                                  /> */}
+                                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                    <DatePicker
+                                      label="Start Date"
+                                      name="startDate"
+                                      value={startDate}
+                                      onChange={(ec) => {setValue(ec) && updateJobInfo(ec, ind)}}
+                                      renderInput={(params) => <PositionTextField variant="filled" {...params} />}
+                                    />
+                                  </LocalizationProvider>
+                                  {/* <PositionTextField
                                     id="filled-multiline-static"
                                     label="End Date"
                                     //color="secondary"
@@ -717,14 +750,23 @@ export default function Application() {
                                     value={elt.endDate}
                                     onChange={(e) => updateJobInfo(e, ind)}
                                     disabled={!applicationInfo.validCode}
-                                  />
+                                  /> */}
+                                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                    <DatePicker
+                                      label="End Date"
+                                      name="endDate"
+                                      value={endDate}
+                                      onChange={(ec) => {setValue2(ec) && updateJobInfo(ec, ind)}}
+                                      renderInput={(params) => <PositionTextField variant="filled" {...params} />}
+                                    />
+                                  </LocalizationProvider>
                                 </Box>
                                 <Box
                                   component="form"
                                   sx={{
                                     "& .MuiTextField-root": {
-                                      m: 1,
-                                      width: "60ch",
+                                      m: 2,
+                                      width: "28.623ch",
                                     },
                                   }}
                                   noValidate
@@ -740,19 +782,16 @@ export default function Application() {
                                     onChange={(e) => updateJobInfo(e, ind)}
                                     disabled={!applicationInfo.validCode}
                                   />
-                                </Box>
-                                <Box
-                                  component="form"
-                                  sx={{
-                                    "& .MuiTextField-root": {
-                                      m: 1,
-                                      width: "60ch",
-                                    },
-                                  }}
-                                  noValidate
-                                  autoComplete="off"
-                                >
-                                  <PositionTextField
+                                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                    <DatePicker
+                                      label="Deadline"
+                                      name="deadline"
+                                      value={deadline}
+                                      onChange={(ec) => {setValue3(ec) && updateJobInfo(ec, ind)}}
+                                      renderInput={(params) => <PositionTextField variant="filled" {...params} />}
+                                    />
+                                  </LocalizationProvider>
+                                  {/* <PositionTextField
                                     id="filled-multiline-static"
                                     label="Deadline"
                                     //color="secondary"
@@ -761,7 +800,7 @@ export default function Application() {
                                     value={elt.deadline}
                                     onChange={(e) => updateJobInfo(e, ind)}
                                     disabled={!applicationInfo.validCode}
-                                  />
+                                  /> */}
                                 </Box>
                                 <Box
                                   component="form"
@@ -776,6 +815,8 @@ export default function Application() {
                                 >
                                   <PositionTextField
                                     id="filled-multiline-static"
+                                    multiline
+                                    rows={2}
                                     label="How to Apply"
                                     //color="secondary"
                                     name="howApply"
@@ -787,10 +828,11 @@ export default function Application() {
                                 </Box>
                                 <div>
                                   <FormControlLabel
+                                    style={{ color: 'white' }}
                                     control={
                                       <Checkbox
                                         defaultChecked
-                                        //color="secondary"
+                                        color="secondary"
                                         name="remote"
                                         value={elt.remote}
                                         onChange={(event, checked) => {
@@ -814,7 +856,7 @@ export default function Application() {
                                 </div>
                                 <Button
                                   variant="outlined"
-                                  //color="secondary"
+                                  color="secondary"
                                   endIcon={<DeleteIcon />}
                                   onClick={() => {
                                     setApplicationInfo({
@@ -889,7 +931,7 @@ export default function Application() {
             {errors.validation && (
               <Snackbar
                 open={errors.validation}
-                autoHideDuration={6000}
+                autoHideDuration={9000}
                 anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
                 onClose={() => setErrors({ ...errors, validation: false })}
                 action={() => console.log("action")}
@@ -902,7 +944,7 @@ export default function Application() {
             {errors.verification && (
               <Snackbar
                 open={errors.verification}
-                autoHideDuration={6000}
+                autoHideDuration={9000}
                 onClose={() => setErrors({ ...errors, verification: false })}
                 anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
               >
