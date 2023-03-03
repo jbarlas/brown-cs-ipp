@@ -22,6 +22,7 @@ import {
   AccordionSummary,
   FormGroup,
   CardMedia,
+  Link,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { createTheme, ThemeProvider, alpha, styled } from '@mui/material/styles';
@@ -36,7 +37,7 @@ import {
   submitCompanyApplication,
   validateApplicationCode,
 } from "../../firebase/utils";
-
+import Pdf from './IPP Membership Levels.pdf';
 
 
 const theme = createTheme({
@@ -352,6 +353,9 @@ export default function Application() {
             To apply to become a partner, please provide the following details
             so we can best inform our students about your job opportunities.
           </Typography>
+          <Link href={Pdf} target="_blank" rel="noopener">
+            IPP Membership Levels
+          </Link>
           <br></br>
           <Box
             component="form"
