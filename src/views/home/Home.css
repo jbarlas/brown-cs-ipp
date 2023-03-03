@@ -1,61 +1,10 @@
 body {
-    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
     font-size: 20px;
-    font-weight: 400;
-}
-
-h1 {
-    font-size: 55px;
-    font-weight:800;
-}
-
-h2 {
-    font-size: 50px;
-    font-weight:800;
-}
-
-.home_badge_div {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-}
-
-.home_badge {
-    height: 200px;
-    width: 200px;
-    /* offset-x, offset-y, blur, color */
-    filter: drop-shadow(15px 5px 2px rgb(197, 197, 197));
-}
-
-.home_badge_text {
-    font-size: 15px;
-    font-weight: 400;
-}
-
-.home_splash {
-    height: 600px;
-    width: 712px;
-    /* margin-top: 1.42rem; */
-}
-
-.home_about_div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.home_about_text {
-    text-align: center;
-    width: 520px;
-    font-size: 20px;
-    margin-bottom: 0;
-}
-
-.home_about_title {
-    margin: 0;
-    width: 250px;
+    /* font-weight: 400; */
+    font-family: franklin-gothic-atf, sans-serif;
+    font-weight: 200;
+    font-style: normal;
 }
 
 .home_divider_div {

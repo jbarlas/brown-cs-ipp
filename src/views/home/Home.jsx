@@ -1,7 +1,6 @@
 import React from 'react'
 import Grid from '@mui/material/Grid';
 import './Home.css'
-// import "@fontsource/montserrat"
 
 import BadgeSocial from '../../assets/ipp_badge_social.png'
 import BadgeEquity from '../../assets/ipp_badge_equity.png'
@@ -14,7 +13,7 @@ import Herbert from '../../assets/Herbert_Picture.jpg'
 import Kendra from '../../assets/Kendra_Picture.jpg'
 import ZeHua from '../../assets/Ze_Hua_Picture.jpg'
 import Stephanie from '../../assets/Stephanie_Picture.jpg'
-import Justin from '../../assets/ipp_badge_social.png'
+import Justin from '../../assets/Justin_Picture.jpg'
 
 
 
