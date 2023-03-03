@@ -29,24 +29,27 @@ export default function Home() {
     ]
 
   return (
-    <div>
+    <div style = {{margin: "1rem"}}>
       {/* TITLE */}
-      <section style={{marginTop: "8rem"}}>
+      <section>
         <Grid container spacing={2}>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <div style={{display:"flex", flexDirection: "column", alignItems: "center", textAlign: "center"}}>
-            <h1 style={{marginBottom: "7px"}}>Brown University Industry Partners Program</h1>
+            <h1 class="home_main_title">Industry Partners Program</h1>
             <div class="home_divider_div_h" style={{justifyContent: "left"}}>
-              <p class="home_dividers_h" style={{width: "800px"}}></p>
+              <p class="home_dividers_h home_top_divider"></p>
             </div>
             </div>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6} style={{padding: "1px"}}>
             <img class="home_splash" src={HomeSplash} />
           </Grid>
           {/* WHAT WE DO */}
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <div class="home_about_div">
+              <div class="home_divider_div_h" style={{justifyContent: "left"}}>
+                <p class="home_dividers mobile_only"></p>
+              </div>
               <h2 class="home_about_title">What We do</h2>
               <p class="home_about_text">
                 The Industry Partners Program at Brown University's Department of Computer Science connects
@@ -61,33 +64,33 @@ export default function Home() {
               </p>
             </div>
           </Grid>
-          <Grid item xs={1}>
-            <div class="home_divider_div">
-              <p class="home_dividers">|</p>
+          <Grid item xs={12} md={1}>
+            <div class="home_divider_div home_about_badge_div">
+              <p class="home_dividers"></p>
             </div>
           </Grid>
-          <Grid item xs={5}>
+          <Grid item xs={12} md={5}>
             <div>
-              <Grid container spacing={2} style={{marginTop: "1rem", marginLeft: "-4rem"}}>
-                <Grid item xs={6}>
+              <Grid container spacing={2} style={{marginTop: "1rem"}}>
+                <Grid item xs={12} md={6}>
                   <div class="home_badge_div">
                     <img class="home_badge" src={BadgeEnviro} alt="social responsibility badge" />
                     <h4 class="home_badge_text">Environmental Responsibility</h4>
                   </div>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} md={6}>
                   <div class="home_badge_div">
                     <img class="home_badge" src={BadgeSocial} alt="equity and diversity badge" />
                     <h4 class="home_badge_text">Social Impact</h4>
                   </div>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} md={6}>
                   <div class="home_badge_div">
                     <img class="home_badge" src={BadgeEquity} alt="growth and mentorship badge" />
                     <h4 class="home_badge_text">Diversity, Equity and Inclusion</h4>
                   </div>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} md={6}>
                   <div class="home_badge_div">
                     <img class="home_badge" src={BadgeGrowth} alt="environmental responsibility badge" />
                     <h4 class="home_badge_text">Growth and Mentorship</h4>
@@ -103,7 +106,7 @@ export default function Home() {
         <div class="home_divider_div_h" style={{justifyContent: "left"}}>
           <p class="home_dividers_h"></p>
         </div>
-        <div style={{display: "flex", justifyContent: "space-evenly",textAlign: "center"}}>
+        <div style={{display: "flex", justifyContent: "space-evenly",textAlign: "center", flexWrap: "wrap"}}>
           <h2 style={{width: "250px", marginTop: "10px"}}>Our Team</h2>
           <p class="home_staff_text">
             We are a team of full-time staff members and student ambassadors. As a branch of Brown's Computer
