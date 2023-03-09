@@ -1,13 +1,17 @@
 import React from "react";
 import "./NavBar.css";
 import { Link, NavLink } from "react-router-dom";
-import logo from './images/ipp-logo.png'
+import ipplogo from './images/ipp-logo.png'
+import brownlogo from './images/brownlogo.png'
+import { AppBar, Toolbar, IconButton } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 export default function NavBar() {
   return (
-    <div className="navbar-container">
+    <div className="navbar-container"> 
       <div className="navbar-logo">
-        <Link to="/"> <img src={logo} alt="ipp logo"/> </Link>
+        <Link to="/"> <img className="brown" src={brownlogo} alt="brown university logo"/> </Link>
+        <Link to="/"> <img className="ipp" src={ipplogo} alt="ipp logo"/> </Link>
         <Link to="/"> Industry Partners Program</Link>
       </div>
       <div className="navbar-links-container">

@@ -13,10 +13,16 @@
   flex-direction: row;
   align-items: center;
 }
-.navbar-logo img {
-  width: 60px;
+.navbar-logo .ipp {
+  width: 40px;
   padding-right: 30px;
 }
+
+.navbar-logo .brown {
+  width: 80px;
+  padding-right: 30px;
+}
+
 
 .navbar-links-container {
   display: flex;
@@ -50,3 +56,9 @@ a {
   border-radius: 5px;
 } */
 
+@font-face {
+  font-family: "franklin-gothic-atf", sans-serif;
+  font-weight: 200;
+  font-style: bold;
+  src: url('https://use.typekit.net/knm8cnu.css') format('truetype');
+}
