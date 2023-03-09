@@ -22,10 +22,9 @@ import {
   AccordionSummary,
   FormGroup,
   CardMedia,
-  Link,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { createTheme, ThemeProvider, alpha, styled } from '@mui/material/styles';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -38,7 +37,6 @@ import {
   validateApplicationCode,
 } from "../../firebase/utils";
 import Pdf from './IPP Membership Levels.pdf';
-
 
 const theme = createTheme({
   typography: {
@@ -276,7 +274,7 @@ export default function Application() {
   // test-company-1
   // test-company-2
   // test-william
-
+  
 
   return (
     <>
@@ -353,9 +351,9 @@ export default function Application() {
             To apply to become a partner, please provide the following details
             so we can best inform our students about your job opportunities.
           </Typography>
-          <Link href={Pdf} target="_blank" rel="noopener">
-            IPP Membership Levels
-          </Link>
+          <Button href={Pdf} target="_blank" rel="noopener">
+            View IPP Membership Levels
+          </Button>
           <br></br>
           <Box
             component="form"
@@ -396,6 +394,7 @@ export default function Application() {
                 disabled={!applicationInfo.validCode}
               />
               <TextField
+                InputProps={{inputMode: 'numeric'}}
                 id="filled-multiline-flexible"
                 label="Size (Employees)"
                 //color="secondary"
@@ -705,6 +704,9 @@ export default function Application() {
                                     disabled={!applicationInfo.validCode}
                                   />
                                   <PositionTextField
+                                    inputProps={{
+                                    inputMode: 'numeric',
+                                    }}
                                     id="filled-multiline-static"
                                     label="Compensation Range"
                                     //color="secondary"
@@ -855,7 +857,59 @@ export default function Application() {
                                         disabled={!applicationInfo.validCode}
                                       />
                                     }
-                                    label="Remote Accessibility?"
+                                    label="Remote"
+                                  />
+                                  <FormControlLabel
+                                    style={{ color: 'white' }}
+                                    control={
+                                      <Checkbox
+                                        defaultChecked
+                                        color="secondary"
+                                        name="remote"
+                                        value={elt.remote}
+                                        onChange={(event, checked) => {
+                                          event.preventDefault();
+                                          setApplicationInfo({
+                                            ...applicationInfo,
+                                            current: {
+                                              ...applicationInfo.current,
+                                              [ind]: {
+                                                ...applicationInfo.current[ind],
+                                                [event.target.name]: checked,
+                                              },
+                                            },
+                                          });
+                                        }}
+                                        disabled={!applicationInfo.validCode}
+                                      />
+                                    }
+                                    label="Hybrid"
+                                  />
+                                  <FormControlLabel
+                                    style={{ color: 'white' }}
+                                    control={
+                                      <Checkbox
+                                        defaultChecked
+                                        color="secondary"
+                                        name="remote"
+                                        value={elt.remote}
+                                        onChange={(event, checked) => {
+                                          event.preventDefault();
+                                          setApplicationInfo({
+                                            ...applicationInfo,
+                                            current: {
+                                              ...applicationInfo.current,
+                                              [ind]: {
+                                                ...applicationInfo.current[ind],
+                                                [event.target.name]: checked,
+                                              },
+                                            },
+                                          });
+                                        }}
+                                        disabled={!applicationInfo.validCode}
+                                      />
+                                    }
+                                    label="In-person"
                                   />
                                 </div>
                                 <Button

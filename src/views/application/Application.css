@@ -1,5 +1,6 @@
 .code-block{
     background-image: url(./temp_imgs/appbg.png);
+    background-size: cover;
 }
 .application-button {
     padding: 5px 10px;
