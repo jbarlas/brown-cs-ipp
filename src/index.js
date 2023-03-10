@@ -7,6 +7,22 @@ import Events from "./views/events/Events";
 import Home from "./views/home/Home";
 import Partners from "./views/partners/Partners";
 import Application from "./views/application/Application";
+import {
+  getCurrentPartners,
+  getDownload,
+  getPartnerData,
+  getPartnerImage,
+  partnerLoader,
+} from "./firebase/utils";
+
+const partnersLoader = async () => {
+  return Object.values(await getCurrentPartners()).map((elt) => {
+    return {
+      ...elt,
+      storageData: getPartnerData(elt.applicationId),
+    };
+  });
+};
 
 const router = createBrowserRouter(
   [
@@ -25,6 +41,7 @@ const router = createBrowserRouter(
         {
           path: "partners",
           element: <Partners />,
+          loader: partnersLoader,
         },
         {
           path: "apply",

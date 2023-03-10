@@ -1,5 +1,11 @@
 import { firebase_app } from "./config";
-import { getDatabase, ref, set, get, child } from "firebase/database";
+import { getDatabase, ref as db_ref, set, get, child } from "firebase/database";
+import {
+  getStorage,
+  ref as storage_ref,
+  getDownloadURL,
+  listAll,
+} from "firebase/storage";
 import {
   getAuth,
   signInAnonymously,
@@ -10,6 +16,7 @@ import {
 } from "firebase/auth";
 
 const firebase_db = getDatabase(firebase_app);
+const firebase_storage = getStorage(firebase_app);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
@@ -56,11 +63,7 @@ export const googleSignIn = () =>
  * sign in with email and password -- these accounts should only exist for IPP members and will be used for verification into internal tooling
  * @param {string} email
  * @param {string} password
-<<<<<<< HEAD
- * @returns 
-=======
  * @returns
->>>>>>> application-demo
  */
 export const emailSignIn = (email, password) =>
   signInWithEmailAndPassword(auth, email, password)
@@ -77,11 +80,7 @@ export const emailSignIn = (email, password) =>
 
 /**
  * logs out current user
-<<<<<<< HEAD
- * @returns 
-=======
  * @returns
->>>>>>> application-demo
  */
 export const logOut = () =>
   signOut(auth)
@@ -100,7 +99,7 @@ export const logOut = () =>
  */
 export const submitCompanyApplication = async (id, info) => {
   console.log(id, info);
-  return set(ref(firebase_db, `partner-application/${id}`), {
+  return set(db_ref(firebase_db, `partner-application/${id}`), {
     ...info,
     pending: true, // temporary field -- want some way to filter reviewed applications in internal tool
   });
@@ -111,7 +110,7 @@ export const submitCompanyApplication = async (id, info) => {
  * @returns
  */
 export const getCurrentPartners = async () => {
-  return get(child(ref(firebase_db), "partners"))
+  return get(child(db_ref(firebase_db), "partners"))
     .then((snapshot) => {
       if (snapshot.exists()) {
         return snapshot.val();
@@ -126,7 +125,7 @@ export const getCurrentPartners = async () => {
 
 export const validateApplicationCode = async (id) => {
   if (id) {
-    return get(child(ref(firebase_db), `partner-application/${id}`))
+    return get(child(db_ref(firebase_db), `partner-application/${id}`))
       .then((snapshot) => {
         return snapshot.exists();
       })
@@ -143,7 +142,57 @@ export const validateApplicationCode = async (id) => {
  * @param {string} id
  */
 export const createUser = (id) => {
-  set(ref(firebase_db, "users/" + id), {
+  set(db_ref(firebase_db, "users/" + id), {
     id: id,
   });
+};
+
+/**
+ * retrieves a specific item from firebase storage
+ * storage file structure: ...partners/{partner-id}/{image-filepath}
+ * @param {string} id - partner id (the id we provided in their application)
+ * @param {string} path - specific path to file
+ * @returns
+ */
+export const getPartnerImage = async (id, path) => {
+  return getDownloadURL(storage_ref(firebase_storage, `partners/${id}/${path}`))
+    .then((url) => {
+      return url;
+    })
+    .catch((error) =>
+      console.log("error getting image path from Firebase Storage", error)
+    );
+};
+
+export const getDownload = async (ref) => {
+  return getDownloadURL(ref)
+    .then((url) => url)
+    .catch((err) =>
+      console.log("error getting download url from Firebase Storage", err)
+    );
+};
+
+/**
+ * an attempt to bulk gather all partner data from storage at once **(does not work)**
+ * @returns object with all partner data from /partners in Firebase Storage
+ */
+export const getPartnerData = async (id) => {
+  return listAll(storage_ref(firebase_storage, `partners/${id}`))
+    .then((res) => {
+      return res.items.map((ref) => {
+        return getDownloadURL(ref)
+          .then((url) => url)
+          .catch((err) =>
+            console.log("error getting download url from Firebase Storage", err)
+          );
+      });
+    })
+    .catch((err) =>
+      console.log("error gathering partner data from Firebase Storage", err)
+    );
+};
+
+export const partnerLoader = async () => {
+  const partners = Object.values(await getCurrentPartners());
+  return partners;
 };
